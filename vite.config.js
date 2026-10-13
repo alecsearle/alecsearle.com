@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 // Each page is its own HTML entry so link previews (Open Graph tags) work
 // per page without server rendering. To add a page (gear, learn, builds),
 // add it here and to vercel.json.
-const PAGES = ['giveaway', 'giveaway/rules']
+const PAGES = ['gear', 'giveaway', 'giveaway/rules']
 
 // Vite only serves /giveaway/ (trailing slash); /giveaway falls back to the
 // homepage. Rewrite so the slashless URL works in dev and preview like on Vercel.

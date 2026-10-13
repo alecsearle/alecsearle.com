@@ -6,7 +6,7 @@ export const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@alec_searle";
 
 // Top navigation. Add each page here when it ships.
 export const NAV_LINKS = [
-  // { label: "Gear", href: "/gear" },
+  { label: "Gear", href: "/gear" },
   // { label: "Learn", href: "/learn" },
   // { label: "Builds", href: "/builds" },
 ];

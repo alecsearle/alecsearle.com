@@ -1,6 +1,16 @@
 {
   "rewrites": [
-    { "source": "/giveaway", "destination": "/giveaway/index.html" },
-    { "source": "/giveaway/rules", "destination": "/giveaway/rules/index.html" }
+    {
+      "source": "/gear",
+      "destination": "/gear/index.html"
+    },
+    {
+      "source": "/giveaway",
+      "destination": "/giveaway/index.html"
+    },
+    {
+      "source": "/giveaway/rules",
+      "destination": "/giveaway/rules/index.html"
+    }
   ]
 }
