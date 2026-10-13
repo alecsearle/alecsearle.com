@@ -1,25 +1,7 @@
 import PageShell from '../components/layout/PageShell'
-import GearCard, { GearImage, GearLabels, GearLinks } from '../components/GearCard'
+import GearCard, { GearFeature, GearImage, GearLabels, GearLinks } from '../components/GearCard'
 import { PageIntro, Section, Contents } from '../components/ui/Editorial'
 import { GEAR_SECTIONS } from '../data/gear'
-
-function FeaturedKit({ item }) {
-  return (
-    <article className="grid gap-6 sm:grid-cols-2 sm:items-center">
-      <GearImage item={item} className="aspect-[4/3] sm:aspect-square" />
-      <div className="flex flex-col gap-3">
-        <p className="text-xs font-medium uppercase tracking-[0.18em] text-ink/50">The easy way: one box</p>
-        <h3 className="font-display text-4xl leading-tight">{item.name}</h3>
-        <GearLabels item={item} />
-        <p className="text-base text-ink/80 leading-relaxed">{item.blurb}</p>
-        <p className="text-sm text-ink/55">For {item.forWho.charAt(0).toLowerCase() + item.forWho.slice(1)}</p>
-        <div className="mt-2">
-          <GearLinks item={item} />
-        </div>
-      </div>
-    </article>
-  )
-}
 
 // Compact hairline list, for "what I fly" style sections.
 function GearList({ items }) {
@@ -64,7 +46,7 @@ export default function Gear() {
           intro={section.intro}
         >
           <div className="flex flex-col gap-14">
-            {section.featured && <FeaturedKit item={section.featured} />}
+            {section.featured && <GearFeature item={section.featured} eyebrow="The easy way: one box" />}
             {section.groups.map((group, gi) =>
               section.id === 'flying' ? (
                 <GearList key={gi} items={group.items} />

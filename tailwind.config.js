@@ -1,12 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ['./index.html', './*/index.html', './*/*/index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
-        paper: '#F6F5F1', // page background
-        ink: '#17160F', // text
-        accent: '#D7381E', // the red from the thumbnails, used sparingly
+        // Light/dark values live in src/index.css (:root and .dark).
+        paper: 'rgb(var(--paper) / <alpha-value>)', // page background
+        ink: 'rgb(var(--ink) / <alpha-value>)', // text
+        tile: 'rgb(var(--tile) / <alpha-value>)', // product photo backgrounds
+        accent: 'rgb(var(--accent) / <alpha-value>)', // the red from the thumbnails, used sparingly
       },
       fontFamily: {
         display: ['"Instrument Serif"', 'Georgia', 'serif'],

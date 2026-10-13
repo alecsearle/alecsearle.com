@@ -2,7 +2,7 @@ import { TextLink } from '../ui/Editorial'
 
 export function GearImage({ item, className = '' }) {
   return (
-    <div className={`bg-white rounded-sm flex items-center justify-center overflow-hidden ${className}`}>
+    <div className={`bg-tile rounded-sm flex items-center justify-center overflow-hidden ${className}`}>
       {item.image ? (
         <img src={item.image} alt="" loading="lazy" className="w-4/5 h-4/5 object-contain" />
       ) : (
@@ -53,6 +53,27 @@ export default function GearCard({ item }) {
         {item.forWho && <p className="text-sm text-ink/55">For {item.forWho.charAt(0).toLowerCase() + item.forWho.slice(1)}</p>}
         {item.blurb && <p className="text-sm text-ink/80 leading-relaxed">{item.blurb}</p>}
         <div className="mt-1">
+          <GearLinks item={item} />
+        </div>
+      </div>
+    </article>
+  )
+}
+
+// Big two-column feature (image + text), for the one product a section leads with.
+export function GearFeature({ item, eyebrow }) {
+  return (
+    <article className="grid gap-6 sm:grid-cols-2 sm:items-center">
+      <GearImage item={item} className="aspect-[4/3] sm:aspect-square" />
+      <div className="flex flex-col gap-3">
+        {eyebrow && <p className="text-xs font-medium uppercase tracking-[0.18em] text-ink/50">{eyebrow}</p>}
+        <h3 className="font-display text-4xl leading-tight">{item.name}</h3>
+        <GearLabels item={item} />
+        <p className="text-base text-ink/80 leading-relaxed">{item.blurb}</p>
+        {item.forWho && (
+          <p className="text-sm text-ink/55">For {item.forWho.charAt(0).toLowerCase() + item.forWho.slice(1)}</p>
+        )}
+        <div className="mt-2">
           <GearLinks item={item} />
         </div>
       </div>

@@ -1,12 +1,6 @@
-import { DISCORD_INVITE_URL, DISCORD_LIVE, YOUTUBE_CHANNEL_URL } from '../../config/site'
+import { SOCIALS } from '../SocialLinks'
 
-const SOCIALS = [
-  ['YouTube', YOUTUBE_CHANNEL_URL],
-  ['Instagram', 'https://www.instagram.com/alec_searle/'],
-  ['TikTok', 'https://www.tiktok.com/@alec_searle'],
-  ['MakerWorld', 'https://makerworld.com/en/collections/29512390-fpv-featured'],
-  ...(DISCORD_LIVE ? [['Discord', DISCORD_INVITE_URL]] : []),
-]
+const FOOTER_LINKS = SOCIALS.map((s) => [s.label, s.href])
 
 export default function Footer() {
   return (
@@ -19,7 +13,7 @@ export default function Footer() {
           </p>
         </div>
         <ul className="md:col-span-3 flex flex-col gap-2">
-          {SOCIALS.map(([label, href]) => (
+          {FOOTER_LINKS.map(([label, href]) => (
             <li key={label}>
               <a href={href} target="_blank" rel="noopener noreferrer" className="text-sm hover:text-accent transition-colors">
                 {label} ↗

@@ -15,6 +15,14 @@
     <meta property="og:description" content="Official rules for Alec Searle's 10K FPV Giveaway." />
     <meta property="og:image" content="https://alecsearle.com/og-image.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // Apply the saved (or system) theme before first paint to avoid a flash.
+      try {
+        var t = localStorage.getItem('theme')
+        if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches))
+          document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -178,5 +178,8 @@ export const GEAR_SECTIONS = [
   },
 ];
 
-// ── Homepage: "What I'm flying" ─────────────────────────────────────
-export const HOME_GEAR = ["air75", "radiomaster", "sky04x-pro"].map(item);
+// ── Homepage: "Featured" + "The Best Beginner FPV Setup" ─────────────
+// My videos show people scrolling to this exact list. Keep the order,
+// section names, and links stable.
+export const FEATURED = item("meteor75-pro-kit");
+export const BEGINNER_SETUP = ["air65", "air75", "meteor75-pro", "radiomaster", "vr04", "lava", "hexacharger"].map(item);

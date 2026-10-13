@@ -4,9 +4,25 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --paper: 246 245 241;
+  --ink: 23 22 15;
+  --tile: 255 255 255;
+  --accent: 215 56 30;
+  color-scheme: light;
+}
+
+.dark {
+  --paper: 16 16 14;
+  --ink: 237 235 228;
+  --tile: 30 30 27;
+  --accent: 240 84 56;
+  color-scheme: dark;
+}
+
 body {
-  background-color: #F6F5F1;
-  color: #17160F;
+  background-color: rgb(var(--paper));
+  color: rgb(var(--ink));
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
@@ -21,13 +37,20 @@ body {
 }
 
 /* Long-form text rendered from markdown (official rules) */
-.prose-rules { font-size: 0.875rem; line-height: 1.7; color: rgb(23 22 15 / 0.72); }
-.prose-rules h1 { font-family: "Instrument Serif", Georgia, serif; font-size: 2.75rem; line-height: 1.05; font-weight: 400; color: #17160F; }
-.prose-rules h2 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgb(23 22 15 / 0.5); margin-top: 0.75rem; }
-.prose-rules h3 { font-size: 1.05rem; font-weight: 600; color: #17160F; border-top: 1px solid rgb(23 22 15 / 0.12); padding-top: 1.5rem; margin-top: 2.25rem; scroll-margin-top: 1.5rem; }
+.prose-rules { font-size: 0.875rem; line-height: 1.7; color: rgb(var(--ink) / 0.72); }
+.prose-rules h1 { font-family: "Instrument Serif", Georgia, serif; font-size: 2.75rem; line-height: 1.05; font-weight: 400; color: rgb(var(--ink)); }
+.prose-rules h2 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgb(var(--ink) / 0.5); margin-top: 0.75rem; }
+.prose-rules h3 { font-size: 1.05rem; font-weight: 600; color: rgb(var(--ink)); border-top: 1px solid rgb(var(--ink) / 0.12); padding-top: 1.5rem; margin-top: 2.25rem; scroll-margin-top: 1.5rem; }
 .prose-rules p, .prose-rules ul, .prose-rules ol { margin-top: 0.75rem; }
 .prose-rules ul { list-style: disc; padding-left: 1.25rem; }
 .prose-rules ol { list-style: decimal; padding-left: 1.25rem; }
 .prose-rules li { margin-top: 0.25rem; }
-.prose-rules strong { color: #17160F; font-weight: 600; }
-.prose-rules a { color: #17160F; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+.prose-rules strong { color: rgb(var(--ink)); font-weight: 600; }
+.prose-rules a { color: rgb(var(--ink)); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+
+/* Single-colour logo images that should follow the text colour */
+.icon-mask {
+  background-color: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}

@@ -62,8 +62,8 @@ function LaunchChecklist() {
   ]
   return (
     <div className="max-w-page mx-auto px-5 sm:px-8 pt-6">
-      <div className="border border-dashed border-amber-600/50 bg-amber-100/50 rounded-sm px-4 py-3">
-        <p className="text-xs font-semibold text-amber-800">Draft preview: not linked anywhere and hidden from search</p>
+      <div className="border border-dashed border-amber-600/50 bg-amber-100/50 dark:bg-amber-400/10 rounded-sm px-4 py-3">
+        <p className="text-xs font-semibold text-amber-800 dark:text-amber-300">Draft preview: not linked anywhere and hidden from search</p>
         <ul className="mt-2 flex flex-wrap gap-x-6 gap-y-1">
           {items.map(([label, done]) => (
             <li key={label} className={`text-xs ${done ? 'text-ink/40 line-through' : 'text-ink/80'}`}>
@@ -85,7 +85,7 @@ function Prizes() {
       <div className="grid gap-6 grid-cols-3">
         {GIVEAWAY.eligibleDrones.map((drone) => (
           <div key={drone.id}>
-            <div className="bg-white rounded-sm aspect-square flex items-center justify-center">
+            <div className="bg-tile rounded-sm aspect-square flex items-center justify-center">
               <img src={drone.image} alt={drone.name} className="w-4/5 h-4/5 object-contain" />
             </div>
             <p className="mt-3 text-base font-medium leading-tight">{drone.name}</p>

@@ -1,3 +1,4 @@
+import ThemeToggle from './ThemeToggle'
 import { DISCORD_INVITE_URL, DISCORD_LIVE, NAV_LINKS, YOUTUBE_CHANNEL_URL } from '../../config/site'
 
 export default function SiteNav() {
@@ -14,6 +15,7 @@ export default function SiteNav() {
         <a href="/" className="font-display text-2xl leading-none tracking-tight flex-shrink-0">
           Alec Searle
         </a>
+        <div className="flex items-center gap-4 sm:gap-6 min-w-0">
         <ul className="flex items-center gap-5 sm:gap-7 overflow-x-auto hide-scrollbar">
           {links.map(({ label, href, external }) => {
             const active = !external && here.startsWith(href)
@@ -33,6 +35,8 @@ export default function SiteNav() {
             )
           })}
         </ul>
+        <ThemeToggle />
+        </div>
       </nav>
     </header>
   )
