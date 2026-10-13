@@ -40,13 +40,18 @@ export function TextLink({ href, children, external = true, sponsored = false, c
   )
 }
 
+// "On this page" jump links. One swipeable row on phones, wrapping on desktop.
 export function Contents({ items }) {
   return (
-    <nav className="max-w-page mx-auto px-5 sm:px-8">
-      <ul className="flex flex-wrap gap-x-6 text-sm">
+    <nav aria-label="On this page" className="max-w-page mx-auto px-5 sm:px-8">
+      <p className="text-xs font-medium uppercase tracking-[0.18em] text-ink/60">On this page</p>
+      <ul className="mt-3 -mx-5 px-5 sm:mx-0 sm:px-0 flex gap-2 overflow-x-auto hide-scrollbar sm:flex-wrap">
         {items.map((item) => (
-          <li key={item.id}>
-            <a href={`#${item.id}`} className="block py-2 text-ink/70 hover:text-ink transition-colors">
+          <li key={item.id} className="flex-shrink-0">
+            <a
+              href={`#${item.id}`}
+              className="block whitespace-nowrap text-sm px-4 py-2 rounded-full border border-ink/20 hover:border-accent hover:text-accent transition-colors"
+            >
               {item.title}
             </a>
           </li>
