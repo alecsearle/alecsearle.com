@@ -2,7 +2,7 @@ export default function Header() {
   return (
     <div className="flex flex-col items-center gap-4 pt-4">
       <img
-        src="/alec_colored.JPG"
+        src="/images/alec-avatar.jpg"
         alt="alec_searle"
         className="w-24 h-24 rounded-full object-cover border-2 border-white/10" style={{ objectPosition: '50% 15%' }}
       />

@@ -1,6 +1,8 @@
 import { Youtube, Instagram } from 'lucide-react'
 import TikTokIcon from './TikTokIcon'
 import MakerWorldIcon from './MakerWorldIcon'
+import DiscordIcon from './DiscordIcon'
+import { DISCORD_INVITE_URL } from '../../config/site'
 
 const SOCIALS = [
   {
@@ -27,7 +29,13 @@ const SOCIALS = [
     Icon: MakerWorldIcon,
     hoverColor: '',
   },
-]
+  {
+    label: 'Discord',
+    href: DISCORD_INVITE_URL,
+    Icon: DiscordIcon,
+    hoverColor: 'hover:text-[#5865F2]',
+  },
+].filter((social) => social.href)
 
 function SocialButton({ label, href, Icon, hoverColor }) {
   return (
@@ -39,14 +47,14 @@ function SocialButton({ label, href, Icon, hoverColor }) {
       className={`group flex flex-col items-center gap-1 text-white/50 transition-colors duration-200 ${hoverColor}`}
     >
       <Icon className="w-7 h-7" />
-      <span className="text-[10px] font-light tracking-wide text-white/30">{label}</span>
+      <span className="text-[10px] font-light tracking-wide text-white/50">{label}</span>
     </a>
   )
 }
 
 export default function SocialLinks() {
   return (
-    <div className="flex items-center gap-8">
+    <div className="flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
       {SOCIALS.map((social) => (
         <SocialButton key={social.label} {...social} />
       ))}

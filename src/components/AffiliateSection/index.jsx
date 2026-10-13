@@ -6,6 +6,10 @@ import { BEGINNER_SETUP, BETAFPV_MAIN, FEATURED } from "./products";
 export default function AffiliateSection() {
   return (
     <div className="w-full pb-8">
+      <p className="mb-6 text-xs text-white/50 leading-relaxed">
+        Heads up: some of these are affiliate links. If you buy through them I get a small cut, at no
+        extra cost to you. It helps keep the videos coming.
+      </p>
       <SectionLabel title="Featured" subtitle="One kit. One purchase. Only $200 and you're in the air" />
       <div className="mb-6">
         <ProductCard product={FEATURED} />
@@ -36,10 +40,6 @@ export default function AffiliateSection() {
         />
         <BuildDropdown />
       </div>
-
-      <p className="mt-8 text-center text-[11px] text-white/20 leading-relaxed">
-        Some links are affiliate links | They help support the channel at no extra cost to you 🙌
-      </p>
     </div>
   );
 }

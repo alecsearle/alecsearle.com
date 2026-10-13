@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/giveaway", "destination": "/giveaway/index.html" },
+    { "source": "/giveaway/rules", "destination": "/giveaway/rules/index.html" }
+  ]
+}

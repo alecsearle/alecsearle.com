@@ -16,3 +16,15 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Long-form text rendered from markdown (official rules) */
+.prose-rules { font-size: 0.875rem; line-height: 1.7; color: rgb(255 255 255 / 0.65); }
+.prose-rules h1 { font-size: 1.5rem; font-weight: 600; color: #fff; letter-spacing: -0.01em; }
+.prose-rules h2 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgb(255 255 255 / 0.5); margin-top: 0.25rem; }
+.prose-rules h3 { font-size: 1rem; font-weight: 600; color: #fff; margin-top: 2.25rem; scroll-margin-top: 1.5rem; }
+.prose-rules p, .prose-rules ul, .prose-rules ol { margin-top: 0.75rem; }
+.prose-rules ul { list-style: disc; padding-left: 1.25rem; }
+.prose-rules ol { list-style: decimal; padding-left: 1.25rem; }
+.prose-rules li { margin-top: 0.25rem; }
+.prose-rules strong { color: rgb(255 255 255 / 0.9); font-weight: 600; }
+.prose-rules a { color: #fff; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
