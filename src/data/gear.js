@@ -178,11 +178,5 @@ export const GEAR_SECTIONS = [
   },
 ];
 
-// ── Homepage (until the homepage refresh) ───────────────────────────
-const homeCard = (id) => {
-  const g = item(id);
-  return { id, name: g.name, description: g.tagline, href: g.href, image: g.image, badge: g.note };
-};
-
-export const FEATURED = homeCard("meteor75-pro-kit");
-export const BEGINNER_SETUP = ["air65", "air75", "meteor75-pro", "radiomaster", "vr04", "lava", "hexacharger"].map(homeCard);
+// ── Homepage: "What I'm flying" ─────────────────────────────────────
+export const HOME_GEAR = ["air75", "radiomaster", "sky04x-pro"].map(item);

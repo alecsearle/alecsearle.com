@@ -1,4 +1,4 @@
-import { ChevronRight } from 'lucide-react'
+import { Section, TextLink } from '../components/ui/Editorial'
 import { GIVEAWAY, CONTACT_EMAIL } from '../config/site'
 
 // Plain-language summary for the giveaway page. The binding text is
@@ -23,23 +23,18 @@ export default function GiveawayRules() {
   ]
 
   return (
-    <section id="rules" className="w-full scroll-mt-6 border-t border-white/10 pt-8">
-      <h2 className="text-xs font-semibold text-white/70 uppercase tracking-widest mb-4">The short version</h2>
-      <dl className="flex flex-col gap-3">
+    <Section id="rules" title="The short version" intro="The official rules, in plain English.">
+      <dl className="border-t border-ink/15">
         {points.map(([term, detail]) => (
-          <div key={term}>
-            <dt className="text-xs font-semibold text-white/85">{term}</dt>
-            <dd className="text-xs text-white/55 leading-relaxed mt-0.5">{detail}</dd>
+          <div key={term} className="border-b border-ink/10 py-4 grid gap-1 sm:grid-cols-[10rem_1fr] sm:gap-6">
+            <dt className="text-sm font-medium">{term}</dt>
+            <dd className="text-sm text-ink/70 leading-relaxed">{detail}</dd>
           </div>
         ))}
       </dl>
-      <a
-        href="/giveaway/rules"
-        className="mt-5 flex items-center justify-between w-full px-4 py-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl transition-all duration-200 text-sm font-medium group"
-      >
-        Read the full official rules
-        <ChevronRight className="w-4 h-4 text-white/40 group-hover:text-white/70 transition-colors" />
-      </a>
-    </section>
+      <TextLink href="/giveaway/rules" external={false} className="inline-block mt-6">
+        Read the full official rules →
+      </TextLink>
+    </Section>
   )
 }

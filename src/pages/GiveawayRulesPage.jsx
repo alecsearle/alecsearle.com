@@ -1,4 +1,3 @@
-import { ArrowLeft } from 'lucide-react'
 import { marked } from 'marked'
 import PageShell from '../components/layout/PageShell'
 import rulesMarkdown from '../content/giveaway-rules.md?raw'
@@ -27,15 +26,11 @@ export default function GiveawayRulesPage() {
 
   return (
     <PageShell>
-      <div className="max-w-2xl mx-auto px-4 pt-8 pb-8">
-        <a
-          href="/giveaway"
-          className="inline-flex items-center gap-1.5 text-xs text-white/50 hover:text-white/80 transition-colors"
-        >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          Back to the giveaway
+      <div className="max-w-page mx-auto px-5 sm:px-8 pt-10 pb-8">
+        <a href="/giveaway" className="text-sm text-ink/60 hover:text-accent transition-colors">
+          ← Back to the giveaway
         </a>
-        <article className="prose-rules mt-8" dangerouslySetInnerHTML={{ __html: html }} />
+        <article className="prose-rules mt-10 max-w-3xl" dangerouslySetInnerHTML={{ __html: html }} />
       </div>
     </PageShell>
   )

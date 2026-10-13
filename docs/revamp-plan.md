@@ -162,14 +162,15 @@ The full beginner setup list and the 3.5" build leave the homepage and move to /
 ---
 
 ## 6. Design direction
-Keep the current identity (dark `#0a0a0a`, white type, soft `white/5` cards). It already matches *clean, personal, not overly futuristic*. The refinements:
-- **Real photography:** your flight stills or shots of your drones in Southern Utah. That's the biggest single step from "link page" to "Alec's site".
-- **One accent colour** for buttons and badges, pulled from your thumbnails or brand, instead of all white.
-- Typography: slightly larger body text on desktop, and a display weight for page titles.
-- **Motion:** hover states only. No scroll animations or parallax.
-- **Performance:** images resized or in WebP, lazy-loaded below the fold, and click-to-play video embeds. Aim for a Lighthouse score of 95+ on mobile.
+*Changed Oct 13, 2026. The first pass (the original dark, boxed, mobile-first style stretched across new pages) was rejected.*
 
----
+**Clean and editorial:**
+- **Colours:** off-white paper `#F6F5F1`, ink `#17160F`, and one accent red `#D7381E` taken from the thumbnails. The tokens live in `tailwind.config.js`.
+- **Type:** *Instrument Serif* for display headings and *Inter* for body text.
+- **Structure:** hairline rules and whitespace instead of cards. Numbered sections have the heading in a left column on desktop (`Section` in `src/components/ui/Editorial.jsx`).
+- **Imagery:** large photos and thumbnails, and white tiles for product photos. Placeholders are fine until there are real photos.
+- **Motion:** hover states only.
+- Design each page for both desktop and phone; don't stretch a phone column.
 
 ## 7. Phases (each one ships on its own)
 

@@ -1,15 +1,39 @@
-import SocialLinks from '../SocialLinks'
+import { DISCORD_INVITE_URL, DISCORD_LIVE, YOUTUBE_CHANNEL_URL } from '../../config/site'
 
-export default function Footer({ socials = true }) {
+const SOCIALS = [
+  ['YouTube', YOUTUBE_CHANNEL_URL],
+  ['Instagram', 'https://www.instagram.com/alec_searle/'],
+  ['TikTok', 'https://www.tiktok.com/@alec_searle'],
+  ['MakerWorld', 'https://makerworld.com/en/collections/29512390-fpv-featured'],
+  ...(DISCORD_LIVE ? [['Discord', DISCORD_INVITE_URL]] : []),
+]
+
+export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.06] mt-6">
-      <div className="max-w-3xl mx-auto px-4 py-10 flex flex-col items-center gap-6 text-center">
-        {socials && <SocialLinks />}
-        <p className="max-w-md text-xs text-white/45 leading-relaxed">
-          Some gear links are affiliate links. If you buy through them I get a small cut, at no extra cost
-          to you. I only link stuff I&apos;ve actually flown or tested.
-        </p>
-        <p className="text-[11px] text-white/30">© {new Date().getFullYear()} Alec Searle</p>
+    <footer className="border-t border-ink/10 mt-24">
+      <div className="max-w-page mx-auto px-5 sm:px-8 py-14 grid gap-10 md:grid-cols-12">
+        <div className="md:col-span-6">
+          <p className="font-display text-4xl leading-tight">Follow along.</p>
+          <p className="text-sm text-ink/60 mt-3 max-w-sm leading-relaxed">
+            New videos every week. Mostly FPV, some 3D printing, and whatever I break next.
+          </p>
+        </div>
+        <ul className="md:col-span-3 flex flex-col gap-2">
+          {SOCIALS.map(([label, href]) => (
+            <li key={label}>
+              <a href={href} target="_blank" rel="noopener noreferrer" className="text-sm hover:text-accent transition-colors">
+                {label} ↗
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div className="md:col-span-3 text-xs text-ink/50 leading-relaxed">
+          <p>
+            Some gear links are affiliate links. If you buy through them I get a small cut, at no extra cost to
+            you.
+          </p>
+          <p className="mt-4">© {new Date().getFullYear()} Alec Searle</p>
+        </div>
       </div>
     </footer>
   )

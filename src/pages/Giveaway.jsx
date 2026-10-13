@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
-import { ExternalLink } from 'lucide-react'
 import PageShell from '../components/layout/PageShell'
-import Header from '../components/Header'
-import SectionLabel from '../components/ui/SectionLabel'
+import { PageIntro, Section, TextLink } from '../components/ui/Editorial'
 import DiscordCard from '../components/DiscordCard'
 import GiveawayRules from './GiveawayRules'
 import NothingHereYet from './NothingHereYet'
@@ -13,8 +11,6 @@ import {
   formEmbedUrl,
   isProductionSite,
 } from '../config/site'
-
-const card = 'bg-white/5 border border-white/10 rounded-xl'
 
 // Viewer's local time. The rules use Mountain time as the official deadline.
 function formatLocal(iso) {
@@ -65,62 +61,51 @@ function LaunchChecklist() {
     ['Eligible countries', GIVEAWAY.eligibleCountries.length > 0],
   ]
   return (
-    <div className="w-full border border-dashed border-amber-400/40 bg-amber-400/5 rounded-xl px-4 py-3">
-      <p className="text-xs font-semibold text-amber-300">
-        Draft preview — not linked anywhere and hidden from search
-      </p>
-      <ul className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1">
-        {items.map(([label, done]) => (
-          <li key={label} className={`text-xs ${done ? 'text-white/40 line-through' : 'text-white/75'}`}>
-            {done ? '✓' : '○'} {label}
-          </li>
-        ))}
-      </ul>
-      <p className="mt-2 text-[11px] text-white/40">
-        Edit <code>src/config/site.js</code>, then set status to <code>'open'</code> to launch.
-      </p>
+    <div className="max-w-page mx-auto px-5 sm:px-8 pt-6">
+      <div className="border border-dashed border-amber-600/50 bg-amber-100/50 rounded-sm px-4 py-3">
+        <p className="text-xs font-semibold text-amber-800">Draft preview: not linked anywhere and hidden from search</p>
+        <ul className="mt-2 flex flex-wrap gap-x-6 gap-y-1">
+          {items.map(([label, done]) => (
+            <li key={label} className={`text-xs ${done ? 'text-ink/40 line-through' : 'text-ink/80'}`}>
+              {done ? '✓' : '○'} {label}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-2 text-[11px] text-ink/50">
+          Edit <code>src/config/site.js</code>, then set status to <code>'open'</code> to launch.
+        </p>
+      </div>
     </div>
   )
 }
 
 function Prizes() {
   return (
-    <section className="w-full">
-      <SectionLabel
-        title="The Prizes"
-        subtitle={`${GIVEAWAY.winners} winners. Each one picks a drone from this list.`}
-      />
-      <div className="grid grid-cols-3 gap-3">
+    <>
+      <div className="grid gap-6 grid-cols-3">
         {GIVEAWAY.eligibleDrones.map((drone) => (
-          <div key={drone.id} className={`${card} p-3 flex flex-col items-center text-center`}>
-            <img
-              src={drone.image}
-              alt={drone.name}
-              className="w-full aspect-square object-contain rounded-lg bg-white/5"
-            />
-            <p className="mt-2 text-xs font-medium leading-tight">{drone.name}</p>
-            <p className="mt-0.5 text-[10px] text-white/40 leading-tight">{drone.variants}</p>
+          <div key={drone.id}>
+            <div className="bg-white rounded-sm aspect-square flex items-center justify-center">
+              <img src={drone.image} alt={drone.name} className="w-4/5 h-4/5 object-contain" />
+            </div>
+            <p className="mt-3 text-base font-medium leading-tight">{drone.name}</p>
+            <p className="mt-1 text-xs text-ink/50">{drone.variants}</p>
           </div>
         ))}
       </div>
 
       {GIVEAWAY.bonusPrizes.length > 0 && (
-        <div className={`${card} mt-3 px-4 py-3`}>
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40">Bonus prizes</p>
-          {GIVEAWAY.bonusPrizes.map((p) => (
-            <p key={p.name} className="text-sm mt-1">
-              {p.count}× {p.name}
-            </p>
-          ))}
-        </div>
+        <p className="mt-8 text-base">
+          <span className="text-xs font-medium uppercase tracking-[0.18em] text-ink/50 mr-3">Bonus</span>
+          {GIVEAWAY.bonusPrizes.map((p) => `${p.count}× ${p.name}`).join(' · ')}
+        </p>
       )}
 
-      <p className="mt-3 text-xs text-white/45 leading-relaxed">
-        This one&apos;s on me. BetaFPV isn&apos;t sponsoring it. I&apos;m buying the drones myself
-        and having them shipped straight to the winners. Too young to enter? Get a parent to enter
-        for you.
+      <p className="mt-8 text-base text-ink/70 leading-relaxed max-w-xl">
+        This one&apos;s on me. BetaFPV isn&apos;t sponsoring it. I&apos;m buying the drones myself and
+        having them shipped straight to the winners. Too young to enter? Get a parent to enter for you.
       </p>
-    </section>
+    </>
   )
 }
 
@@ -131,36 +116,31 @@ function HowToEnter() {
     ['Watch your email', `Winners hear from ${CONTACT_EMAIL} within a week of the close.`],
   ]
   return (
-    <section className="w-full">
-      <SectionLabel title="How to Enter" />
-      <ol className="flex flex-col gap-2">
-        {steps.map(([title, body], i) => (
-          <li key={title} className={`${card} flex items-start gap-3 px-4 py-3`}>
-            <span className="w-6 h-6 rounded-full bg-white text-black text-xs font-semibold flex items-center justify-center flex-shrink-0">
-              {i + 1}
-            </span>
-            <div>
-              <p className="text-sm font-medium">{title}</p>
-              <p className="text-xs text-white/50 mt-0.5">{body}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
-    </section>
+    <ol className="border-t border-ink/15">
+      {steps.map(([title, body], i) => (
+        <li key={title} className="border-b border-ink/10 grid grid-cols-[2.5rem_1fr] gap-x-4 py-5">
+          <span className="font-display text-3xl text-accent leading-none">{i + 1}</span>
+          <span>
+            <span className="block font-display text-2xl sm:text-3xl leading-tight">{title}</span>
+            <span className="block text-sm text-ink/60 mt-1">{body}</span>
+          </span>
+        </li>
+      ))}
+    </ol>
   )
 }
 
 function EntryForm() {
   if (!GIVEAWAY.formUrl) {
     return (
-      <div className={`${card} border-dashed px-4 py-10 text-center text-xs text-white/40`}>
+      <div className="border border-dashed border-ink/20 rounded-sm px-4 py-10 text-center text-sm text-ink/50">
         Google Form goes here. Add <code>formUrl</code> in <code>src/config/site.js</code>.
       </div>
     )
   }
   return (
-    <div className="w-full">
-      <div className="rounded-xl overflow-hidden bg-white">
+    <div>
+      <div className="rounded-sm overflow-hidden bg-white border border-ink/10">
         <iframe
           src={formEmbedUrl(GIVEAWAY.formUrl)}
           title="Giveaway entry form"
@@ -171,28 +151,23 @@ function EntryForm() {
         </iframe>
       </div>
       {/* Instagram/TikTok in-app browsers sometimes choke on embedded forms */}
-      <a
-        href={GIVEAWAY.formUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-3 flex items-center justify-center gap-2 w-full px-4 py-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl transition-all duration-200 text-sm font-medium"
-      >
-        Form not loading? Open it directly
-        <ExternalLink className="w-4 h-4 text-white/50" />
-      </a>
+      <p className="mt-4 text-sm text-ink/60">
+        Form not loading?{' '}
+        <TextLink href={GIVEAWAY.formUrl}>Open it directly ↗</TextLink>
+      </p>
     </div>
   )
 }
 
 function Closed() {
   return (
-    <section className={`${card} w-full px-4 py-6 text-center`}>
-      <p className="text-sm font-semibold">Entries are closed</p>
-      <p className="text-xs text-white/50 mt-2 leading-relaxed">
+    <div>
+      <p className="font-display text-4xl leading-tight">Entries are closed.</p>
+      <p className="text-base text-ink/70 mt-3 leading-relaxed max-w-xl">
         Thanks to everyone who entered. Winners will be contacted by email and announced
         {DISCORD_INVITE_URL ? ' in the Discord' : ''} once they&apos;re confirmed.
       </p>
-    </section>
+    </div>
   )
 }
 
@@ -214,53 +189,52 @@ export default function Giveaway() {
 
   return (
     <PageShell>
-      <div className="max-w-xl mx-auto px-4 pt-8 pb-8 flex flex-col items-center gap-10">
-        {GIVEAWAY.status === 'draft' && <LaunchChecklist />}
+      {GIVEAWAY.status === 'draft' && <LaunchChecklist />}
 
-        <Header />
-
-        <section className="w-full text-center">
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40">10K Giveaway</p>
-          <h2 className="text-3xl font-semibold tracking-tight mt-2">Thank you.</h2>
-          <p className="text-sm text-white/60 mt-3 leading-relaxed">
-            A few months ago I bought my first tiny whoop and started filming myself figuring it out.
-            Somehow a lot of you decided to come along for that. So I&apos;m giving away two drones,
-            and finally opening the Discord a bunch of you have been asking for.
+      <PageIntro eyebrow="10K Giveaway" title="Thank you.">
+        <p>
+          A few months ago I bought my first tiny whoop and started filming myself figuring it out. Somehow a
+          lot of you decided to come along for that. So I&apos;m giving away two drones, and finally opening
+          the Discord a bunch of you have been asking for.
+        </p>
+        {status === 'open' && GIVEAWAY.endsAt && (
+          <p className="mt-6 text-base text-ink">
+            Ends {formatLocal(GIVEAWAY.endsAt)}
+            {remaining && <span className="text-accent"> · {remaining}</span>}
           </p>
-          {status === 'open' && GIVEAWAY.endsAt && (
-            <p className="mt-4 inline-block text-xs text-white/70 border border-white/15 rounded-full px-3 py-1">
-              Ends {formatLocal(GIVEAWAY.endsAt)}
-              {remaining && <span className="text-white/40"> · {remaining}</span>}
-            </p>
-          )}
-        </section>
+        )}
+      </PageIntro>
 
+      <Section number="01" title="The prizes" intro={`${GIVEAWAY.winners} winners. Each one picks a drone from this list.`}>
         <Prizes />
+      </Section>
 
-        {status === 'closed' ? (
+      {status === 'closed' ? (
+        <Section number="02" title="That's a wrap">
           <Closed />
-        ) : (
-          <>
+        </Section>
+      ) : (
+        <>
+          <Section number="02" title="How to enter">
             <HowToEnter />
-            <section id="enter" className="w-full scroll-mt-6">
-              <SectionLabel title="Enter" subtitle="One entry per person. Duplicates get removed." />
-              <EntryForm />
-            </section>
-          </>
-        )}
+          </Section>
+          <Section id="enter" number="03" title="Enter" intro="One entry per person. Duplicates get removed.">
+            <EntryForm />
+          </Section>
+        </>
+      )}
 
-        {DISCORD_INVITE_URL && (
-          <section className="w-full">
-            <SectionLabel
-              title="The Discord"
-              subtitle="Not required to enter. Just a good place to hang out with other pilots."
-            />
-            <DiscordCard showBeforeLaunch />
-          </section>
-        )}
+      {DISCORD_INVITE_URL && (
+        <Section
+          number={status === 'closed' ? '03' : '04'}
+          title="The Discord"
+          intro="Not required to enter. Just a good place to hang out with other pilots."
+        >
+          <DiscordCard showBeforeLaunch />
+        </Section>
+      )}
 
-        <GiveawayRules />
-      </div>
+      <GiveawayRules />
     </PageShell>
   )
 }

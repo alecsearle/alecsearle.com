@@ -1,13 +1,7 @@
-import { ChevronRight } from 'lucide-react'
-import DiscordIcon from '../SocialLinks/DiscordIcon'
 import { DISCORD_INVITE_URL, DISCORD_LIVE } from '../../config/site'
 
 // showBeforeLaunch: the giveaway page's draft preview shows the card so it can be tested.
-export default function DiscordCard({
-  showBeforeLaunch = false,
-  title = 'Join the FPV Discord',
-  description = 'Ask questions, share clips and builds, and help other pilots out. Free, and open to everyone.',
-}) {
+export default function DiscordCard({ showBeforeLaunch = false }) {
   if (!DISCORD_INVITE_URL || (!DISCORD_LIVE && !showBeforeLaunch)) return null
 
   return (
@@ -15,18 +9,17 @@ export default function DiscordCard({
       href={DISCORD_INVITE_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center justify-between w-full px-4 py-4 bg-[#5865F2]/10 hover:bg-[#5865F2]/20 border border-[#5865F2]/30 hover:border-[#5865F2]/50 rounded-xl transition-all duration-200 group"
+      className="group flex flex-col sm:flex-row sm:items-end justify-between gap-4 bg-[#5865F2] text-white rounded-sm p-6 sm:p-8"
     >
-      <div className="flex items-center gap-3">
-        <div className="w-11 h-11 rounded-lg bg-[#5865F2] flex items-center justify-center flex-shrink-0">
-          <DiscordIcon className="w-6 h-6 text-white" />
-        </div>
-        <div>
-          <p className="text-sm font-semibold">{title}</p>
-          <p className="text-xs text-white/55 mt-0.5 leading-snug">{description}</p>
-        </div>
-      </div>
-      <ChevronRight className="w-4 h-4 text-white/40 group-hover:text-white/70 transition-colors flex-shrink-0 ml-3" />
+      <span>
+        <span className="block font-display text-4xl leading-none">Join the FPV Discord</span>
+        <span className="block text-sm text-white/80 mt-3 max-w-md leading-relaxed">
+          Ask questions, share clips and builds, and help other pilots out. Free, and open to everyone.
+        </span>
+      </span>
+      <span className="text-sm font-medium whitespace-nowrap group-hover:translate-x-1 transition-transform">
+        Join the server →
+      </span>
     </a>
   )
 }

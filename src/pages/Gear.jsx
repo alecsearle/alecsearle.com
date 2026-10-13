@@ -1,75 +1,92 @@
 import PageShell from '../components/layout/PageShell'
-import GearCard from '../components/GearCard'
+import GearCard, { GearImage, GearLabels, GearLinks } from '../components/GearCard'
+import { PageIntro, Section, Contents } from '../components/ui/Editorial'
 import { GEAR_SECTIONS } from '../data/gear'
 
-function Group({ group }) {
+function FeaturedKit({ item }) {
   return (
-    <div>
-      {group.label && (
-        <div className="mb-3">
-          <h3 className="text-xs font-semibold text-white/70 uppercase tracking-widest">{group.label}</h3>
-          {group.note && <p className="text-xs text-white/45 mt-1">{group.note}</p>}
+    <article className="grid gap-6 sm:grid-cols-2 sm:items-center">
+      <GearImage item={item} className="aspect-[4/3] sm:aspect-square" />
+      <div className="flex flex-col gap-3">
+        <p className="text-xs font-medium uppercase tracking-[0.18em] text-ink/50">The easy way: one box</p>
+        <h3 className="font-display text-4xl leading-tight">{item.name}</h3>
+        <GearLabels item={item} />
+        <p className="text-base text-ink/80 leading-relaxed">{item.blurb}</p>
+        <p className="text-sm text-ink/55">For {item.forWho.charAt(0).toLowerCase() + item.forWho.slice(1)}</p>
+        <div className="mt-2">
+          <GearLinks item={item} />
         </div>
-      )}
-      <div className="grid gap-3 md:grid-cols-2">
-        {group.items.map((item) => (
-          <GearCard key={item.id} item={item} />
-        ))}
       </div>
-    </div>
+    </article>
+  )
+}
+
+// Compact hairline list, for "what I fly" style sections.
+function GearList({ items }) {
+  return (
+    <ul className="divide-y divide-ink/10 border-y border-ink/10">
+      {items.map((item) => (
+        <li key={item.id} className="py-5 grid grid-cols-[5rem_1fr] sm:grid-cols-[6rem_1fr_auto] gap-x-5 gap-y-2 items-center">
+          <GearImage item={item} className="aspect-square row-span-2 sm:row-span-1" />
+          <div>
+            <GearLabels item={item} />
+            <h3 className="text-lg font-medium mt-1">{item.name}</h3>
+            <p className="text-sm text-ink/65 mt-1 leading-relaxed">{item.blurb}</p>
+          </div>
+          <div className="sm:text-right">
+            <GearLinks item={item} />
+          </div>
+        </li>
+      ))}
+    </ul>
   )
 }
 
 export default function Gear() {
   return (
     <PageShell>
-      <div className="max-w-3xl mx-auto px-4 pt-10 pb-8">
-        <header className="max-w-xl">
-          <h1 className="text-3xl font-semibold tracking-tight">Gear</h1>
-          <p className="text-sm text-white/60 mt-3 leading-relaxed">
-            Everything here is something I&apos;ve flown and made a video about. If a card says{' '}
-            <span className="text-emerald-300">I fly this</span>, it&apos;s in my bag right now.{' '}
-            <span className="text-sky-300">Recommended</span> means I&apos;d tell a beginner to buy it.
-          </p>
-          <p className="text-xs text-white/40 mt-3 leading-relaxed">
-            Most BetaFPV links are affiliate links. If you buy through them I get a small cut, at no
-            extra cost to you.
-          </p>
-        </header>
+      <PageIntro eyebrow="What I fly & recommend" title="Gear">
+        <p>
+          Everything here is something I&apos;ve flown and made a video about.{' '}
+          <span className="text-accent">I fly this</span> means it&apos;s in my bag right now.{' '}
+          <span className="text-ink">Recommended</span> means I&apos;d tell a beginner to buy it.
+        </p>
+      </PageIntro>
 
-        <nav className="flex gap-2 mt-6">
-          {GEAR_SECTIONS.map((s) => (
-            <a
-              key={s.id}
-              href={`#${s.id}`}
-              className="text-xs px-3 py-1.5 rounded-full border border-white/15 text-white/70 hover:text-white hover:border-white/30 transition-colors"
-            >
-              {s.title}
-            </a>
-          ))}
-        </nav>
+      <Contents items={GEAR_SECTIONS} />
 
-        {GEAR_SECTIONS.map((section) => (
-          <section key={section.id} id={section.id} className="mt-12 scroll-mt-20">
-            <h2 className="text-xl font-semibold tracking-tight">{section.title}</h2>
-            {section.intro && <p className="text-sm text-white/55 mt-2 max-w-xl">{section.intro}</p>}
-
-            <div className="flex flex-col gap-8 mt-6">
-              {section.featured && (
-                <div>
-                  <p className="text-xs font-semibold text-white/70 uppercase tracking-widest mb-3">
-                    The easy way: one box
-                  </p>
-                  <GearCard item={section.featured} large />
+      {GEAR_SECTIONS.map((section, i) => (
+        <Section
+          key={section.id}
+          id={section.id}
+          number={String(i + 1).padStart(2, '0')}
+          title={section.title}
+          intro={section.intro}
+        >
+          <div className="flex flex-col gap-14">
+            {section.featured && <FeaturedKit item={section.featured} />}
+            {section.groups.map((group, gi) =>
+              section.id === 'flying' ? (
+                <GearList key={gi} items={group.items} />
+              ) : (
+                <div key={group.label || gi}>
+                  {group.label && (
+                    <div className="mb-6">
+                      <h3 className="font-display text-3xl">{group.label}</h3>
+                      {group.note && <p className="text-sm text-ink/55 mt-1">{group.note}</p>}
+                    </div>
+                  )}
+                  <div className={`grid gap-x-6 gap-y-12 sm:grid-cols-2 ${group.items.length === 3 ? 'lg:grid-cols-3' : ''}`}>
+                    {group.items.map((item) => (
+                      <GearCard key={item.id} item={item} />
+                    ))}
+                  </div>
                 </div>
-              )}
-              {section.groups.map((group, i) => (
-                <Group key={group.label || i} group={group} />
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
+              ),
+            )}
+          </div>
+        </Section>
+      ))}
     </PageShell>
   )
 }

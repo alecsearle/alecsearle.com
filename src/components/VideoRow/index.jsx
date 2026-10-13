@@ -1,36 +1,39 @@
 export const videoUrl = (video) =>
   video.short ? `https://www.youtube.com/shorts/${video.id}` : `https://www.youtube.com/watch?v=${video.id}`
 
-// Compact playlist-style row: small thumbnail, title, length.
-export default function VideoRow({ video }) {
+// One line in an editorial video list: thumbnail, title, length.
+export default function VideoRow({ video, index }) {
   return (
-    <a
-      href={videoUrl(video)}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center gap-3 p-2 pr-3 rounded-xl hover:bg-white/5 transition-colors group"
-    >
-      <div className="relative w-28 flex-shrink-0 aspect-video rounded-lg overflow-hidden bg-white/5">
-        <img
-          src={`https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`}
-          alt=""
-          loading="lazy"
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-        />
-        <span className="absolute bottom-1 right-1 text-[10px] font-medium bg-black/80 rounded px-1 leading-4">
-          {video.length}
+    <li>
+      <a
+        href={videoUrl(video)}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group grid grid-cols-[7.5rem_1fr] sm:grid-cols-[2rem_9rem_1fr_auto] gap-x-4 sm:gap-x-5 items-center py-4"
+      >
+        <span className="hidden sm:block text-sm text-ink/35 tabular-nums">
+          {(video.part ?? index) != null && String(video.part ?? index).padStart(2, '0')}
         </span>
-      </div>
-      <div className="min-w-0">
-        <p className="text-sm leading-snug line-clamp-2 text-white/85 group-hover:text-white">
-          {video.part && <span className="text-white/40 mr-1">Pt. {video.part}</span>}
-          {video.title}
-        </p>
-        <p className="mt-1 flex items-center gap-2 text-[11px] text-white/40">
-          {video.short && <span className="border border-white/15 rounded px-1 leading-4">Short</span>}
-          {video.note}
-        </p>
-      </div>
-    </a>
+        <span className="block aspect-video overflow-hidden rounded-sm bg-ink/5">
+          <img
+            src={`https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`}
+            alt=""
+            loading="lazy"
+            className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
+          />
+        </span>
+        <span className="min-w-0">
+          <span className="block text-base leading-snug group-hover:text-accent transition-colors">
+            {video.title}
+          </span>
+          <span className="block text-xs text-ink/45 mt-1">
+            {video.length}
+            {video.short && ' · Short'}
+            {video.note && ` · ${video.note}`}
+          </span>
+        </span>
+        <span className="hidden sm:block text-ink/30 group-hover:text-accent transition-colors">↗</span>
+      </a>
+    </li>
   )
 }
