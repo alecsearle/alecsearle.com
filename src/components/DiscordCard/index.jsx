@@ -1,12 +1,14 @@
 import { ChevronRight } from 'lucide-react'
 import DiscordIcon from '../SocialLinks/DiscordIcon'
-import { DISCORD_INVITE_URL } from '../../config/site'
+import { DISCORD_INVITE_URL, DISCORD_LIVE } from '../../config/site'
 
+// showBeforeLaunch: the giveaway page's draft preview shows the card so it can be tested.
 export default function DiscordCard({
+  showBeforeLaunch = false,
   title = 'Join the FPV Discord',
   description = 'Ask questions, share clips and builds, and help other pilots out. Free, and open to everyone.',
 }) {
-  if (!DISCORD_INVITE_URL) return null
+  if (!DISCORD_INVITE_URL || (!DISCORD_LIVE && !showBeforeLaunch)) return null
 
   return (
     <a

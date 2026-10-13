@@ -2,7 +2,7 @@ import { Youtube, Instagram } from 'lucide-react'
 import TikTokIcon from './TikTokIcon'
 import MakerWorldIcon from './MakerWorldIcon'
 import DiscordIcon from './DiscordIcon'
-import { DISCORD_INVITE_URL } from '../../config/site'
+import { DISCORD_INVITE_URL, DISCORD_LIVE } from '../../config/site'
 
 const SOCIALS = [
   {
@@ -31,7 +31,7 @@ const SOCIALS = [
   },
   {
     label: 'Discord',
-    href: DISCORD_INVITE_URL,
+    href: DISCORD_LIVE ? DISCORD_INVITE_URL : '',
     Icon: DiscordIcon,
     hoverColor: 'hover:text-[#5865F2]',
   },

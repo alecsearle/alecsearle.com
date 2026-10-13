@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react'
-import { Analytics } from '@vercel/analytics/react'
-import { ArrowLeft, ExternalLink } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
+import PageShell from '../components/layout/PageShell'
 import Header from '../components/Header'
-import SocialLinks from '../components/SocialLinks'
 import SectionLabel from '../components/ui/SectionLabel'
 import DiscordCard from '../components/DiscordCard'
 import GiveawayRules from './GiveawayRules'
+import NothingHereYet from './NothingHereYet'
 import {
   GIVEAWAY,
   DISCORD_INVITE_URL,
   CONTACT_EMAIL,
   formEmbedUrl,
+  isProductionSite,
 } from '../config/site'
 
 const card = 'bg-white/5 border border-white/10 rounded-xl'
@@ -209,17 +210,11 @@ export default function Giveaway() {
     return () => meta.remove()
   }, [])
 
-  return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white">
-      <div className="max-w-xl mx-auto px-4 pt-6 pb-14 flex flex-col items-center gap-10">
-        <a
-          href="/"
-          className="self-start flex items-center gap-1.5 text-xs text-white/50 hover:text-white/80 transition-colors"
-        >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          alecsearle.com
-        </a>
+  if (GIVEAWAY.status === 'draft' && isProductionSite()) return <NothingHereYet />
 
+  return (
+    <PageShell>
+      <div className="max-w-xl mx-auto px-4 pt-8 pb-8 flex flex-col items-center gap-10">
         {GIVEAWAY.status === 'draft' && <LaunchChecklist />}
 
         <Header />
@@ -260,15 +255,12 @@ export default function Giveaway() {
               title="The Discord"
               subtitle="Not required to enter. Just a good place to hang out with other pilots."
             />
-            <DiscordCard />
+            <DiscordCard showBeforeLaunch />
           </section>
         )}
 
         <GiveawayRules />
-
-        <SocialLinks />
       </div>
-      <Analytics />
-    </main>
+    </PageShell>
   )
 }

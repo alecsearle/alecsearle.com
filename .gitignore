@@ -4,3 +4,6 @@ dist
 .env.local
 
 .DS_Store
+
+# YouTube export (regenerate with npm run videos)
+scripts/videos.json

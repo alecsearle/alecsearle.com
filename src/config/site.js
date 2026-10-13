@@ -4,6 +4,13 @@
 export const SITE_URL = "https://alecsearle.com";
 export const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@alec_searle";
 
+// Top navigation. Add each page here when it ships.
+export const NAV_LINKS = [
+  // { label: "Gear", href: "/gear" },
+  // { label: "Learn", href: "/learn" },
+  // { label: "Builds", href: "/builds" },
+];
+
 // Permanent Discord invite (never expires). Empty = Discord links hidden.
 export const DISCORD_INVITE_URL = "https://discord.gg/JtkmvZgHJU";
 
@@ -59,6 +66,14 @@ export const GIVEAWAY = {
   // in section 5 of the rules. Shape: { name: "...", count: 5 }
   bonusPrizes: [],
 };
+
+// The Discord launches with the giveaway: hidden everywhere while it's a draft.
+export const DISCORD_LIVE = Boolean(DISCORD_INVITE_URL) && GIVEAWAY.status !== "draft";
+
+// True on alecsearle.com itself; false on localhost and Vercel previews, where
+// draft pages stay fully visible for testing.
+export const isProductionSite = () =>
+  typeof window !== "undefined" && /(^|\.)alecsearle\.com$/.test(window.location.hostname);
 
 export const formEmbedUrl = (url) =>
   url ? `${url}${url.includes("?") ? "&" : "?"}embedded=true` : "";

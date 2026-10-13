@@ -1,7 +1,7 @@
 import SectionLabel from "../ui/SectionLabel";
 import ProductCard from "./ProductCard";
 import BuildDropdown from "./BuildDropdown";
-import { BEGINNER_SETUP, BETAFPV_MAIN, FEATURED } from "./products";
+import { BEGINNER_SETUP, BETAFPV_MAIN, FEATURED } from "../../data/gear";
 
 export default function AffiliateSection() {
   return (

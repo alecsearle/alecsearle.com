@@ -1,8 +1,9 @@
-import { Analytics } from '@vercel/analytics/react'
 import { ArrowLeft } from 'lucide-react'
 import { marked } from 'marked'
+import PageShell from '../components/layout/PageShell'
 import rulesMarkdown from '../content/giveaway-rules.md?raw'
-import { GIVEAWAY, formatMountainTime } from '../config/site'
+import { GIVEAWAY, formatMountainTime, isProductionSite } from '../config/site'
+import NothingHereYet from './NothingHereYet'
 
 // The rules are plain markdown so they're easy to edit. Dates and the country
 // list are filled in from config so they can't drift from the giveaway page.
@@ -22,9 +23,11 @@ function renderRules() {
 const html = renderRules()
 
 export default function GiveawayRulesPage() {
+  if (GIVEAWAY.status === 'draft' && isProductionSite()) return <NothingHereYet />
+
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white">
-      <div className="max-w-2xl mx-auto px-4 pt-6 pb-16">
+    <PageShell>
+      <div className="max-w-2xl mx-auto px-4 pt-8 pb-8">
         <a
           href="/giveaway"
           className="inline-flex items-center gap-1.5 text-xs text-white/50 hover:text-white/80 transition-colors"
@@ -34,7 +37,6 @@ export default function GiveawayRulesPage() {
         </a>
         <article className="prose-rules mt-8" dangerouslySetInnerHTML={{ __html: html }} />
       </div>
-      <Analytics />
-    </main>
+    </PageShell>
   )
 }

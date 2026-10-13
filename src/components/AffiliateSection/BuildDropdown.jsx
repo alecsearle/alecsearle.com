@@ -8,7 +8,7 @@ import {
   BUILD_CHANNEL_URL,
   BUILD_CORE_COST,
   BUILD_EXTRAS_COST,
-} from './products'
+} from '../../data/builds'
 
 function BuildHero() {
   const [imgError, setImgError] = useState(false)
