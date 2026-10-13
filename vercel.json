@@ -5,6 +5,10 @@
       "destination": "/gear/index.html"
     },
     {
+      "source": "/learn",
+      "destination": "/learn/index.html"
+    },
+    {
       "source": "/giveaway",
       "destination": "/giveaway/index.html"
     },
