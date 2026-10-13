@@ -14,4 +14,17 @@ export default function mount(Page) {
   )
   if (root.hasChildNodes()) hydrateRoot(root, app)
   else createRoot(root).render(app)
+
+  // Arriving from another page with a #section link: the browser tries to jump
+  // before React has drawn the page, so jump again once it has.
+  if (location.hash) {
+    const id = decodeURIComponent(location.hash.slice(1))
+    let tries = 0
+    const jump = () => {
+      const el = document.getElementById(id)
+      if (el) el.scrollIntoView({ behavior: 'instant' })
+      else if (++tries < 30) requestAnimationFrame(jump)
+    }
+    requestAnimationFrame(jump)
+  }
 }

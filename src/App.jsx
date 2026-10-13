@@ -19,7 +19,7 @@ const START_HERE = [
   {
     q: 'How do I actually fly this thing?',
     a: 'Eight simulator exercises, from hovering to power loops.',
-    href: '/learn',
+    href: '/learn#flying',
   },
   {
     q: 'How do I set it all up?',
