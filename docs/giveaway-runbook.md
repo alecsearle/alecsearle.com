@@ -64,22 +64,10 @@ For the read-only channels: on `@everyone`, deny **Send Messages** and **Create 
 >
 > Giveaway winners are only ever contacted by email from me. I will never ask you to pay shipping or fees.
 
-### `#youtube-uploads`: automatic long-form video posts
-1. Find your **channel ID** at youtube.com/account_advanced. It starts with `UC`.
-2. Your feed URL for **long-form only** uses the same ID with `UC` swapped for `UULF`:
-   ```
-   https://www.youtube.com/feeds/videos.xml?playlist_id=UULF<rest of channel id>
-   ```
-   **Check it before going further.** Open the URL in a browser. It should list your recent long-form videos and **no Shorts**. YouTube maintains the `UULF` (long-form) and `UUSH` (Shorts) playlists automatically. If the URL errors, use the full-channel feed `https://www.youtube.com/feeds/videos.xml?channel_id=UC…` with a MonitoRSS filter on the link that excludes `/shorts/`.
-3. Go to **monitorss.xyz**, log in with Discord, add the bot to the server, and create a new feed with that URL, pointed at `#youtube-uploads`.
-4. Message format:
-   ```
-   <@&ROLE_ID_OF_YOUTUBE_NOTIFICATIONS> New video: **{{title}}**
-   {{link}}
-   ```
-   Discord's own YouTube embed supplies the thumbnail and preview.
-5. The bot only posts items it hasn't seen before, so there are no duplicates. RSS feeds only ever contain public videos, so unlisted and private uploads never get posted.
-6. Test it with **Send test article** in MonitoRSS.
+### `#youtube-uploads`: automatic video posts
+Done. Alec set up alerts directly in Discord (Oct 2026).
+
+Note: YouTube's RSS feeds (`youtube.com/feeds/videos.xml?...`) returned 404 when tested in Oct 2026, so don't rely on RSS-based bots like MonitoRSS. The site itself uses the YouTube Data API instead.
 
 ---
 
