@@ -2,6 +2,8 @@
 // Hand-curated. To add a video: copy its id/title/length from
 // scripts/videos.json (npm run videos) into the right topic.
 // short: true marks a YouTube Short. part: numbered series entry.
+// A topic with `feature` gets the big layout: the long-form video plus a
+// numbered list (its exercises, or the series Shorts).
 
 export const FEATURED_VIDEO = {
   id: "AXTtgPLoQrA",
@@ -42,9 +44,10 @@ export const TOPICS = [
   {
     id: "setup",
     title: "FPV Setup for Dummies",
-    intro: "Getting your gear connected and ready, one short at a time.",
+    intro: "Getting your gear connected and ready to fly.",
+    feature: { id: "r8WMn2OeP4Q", title: "How I Set Up My First FPV Drone (Beginner Guide)", length: "14:40" },
+    listLabel: "The series: each step remade as its own Short, with extra detail",
     videos: [
-      { id: "r8WMn2OeP4Q", title: "How I Set Up My First FPV Drone (Beginner Guide)", length: "14:40", note: "The full walkthrough" },
       { id: "Z7tlE0BmAAU", title: "How FPV Actually Works", length: "1:22", short: true, part: 1 },
       { id: "aQmuHDup26Y", title: "FPV Setup for Beginners | What Gear Do You Need?", length: "0:51", short: true, part: 2 },
       { id: "67Mtp3uXy0s", title: "FPV Radio Setup (Model Profile & Arm Alert)", length: "2:34", short: true, part: 3 },
@@ -59,6 +62,7 @@ export const TOPICS = [
     id: "flying",
     title: "Flying FPV for Dummies",
     intro: "Learning to actually fly, starting in a simulator.",
+    feature: FEATURED_VIDEO,
     videos: [
       { id: "Ljw2_856qfc", title: "Your First FPV Simulator (Beginner Guide) | Liftoff Microdrones", length: "15:08" },
       { id: "HV4aiumloDk", title: "I Spent 20 Hours Learning FPV in a Simulator… Here’s What Happened", length: "4:59" },

@@ -1,71 +1,99 @@
 import PageShell from '../components/layout/PageShell'
-import VideoRow from '../components/VideoRow'
+import VideoRow, { videoUrl } from '../components/VideoRow'
 import { PageIntro, Section, Contents } from '../components/ui/Editorial'
-import { FEATURED_VIDEO, TOPICS } from '../data/videos'
+import { TOPICS } from '../data/videos'
 
 const toSeconds = (t) => t.split(':').reduce((total, n) => total * 60 + Number(n), 0)
-const at = (t) => `https://www.youtube.com/watch?v=${FEATURED_VIDEO.id}&t=${toSeconds(t)}s`
+const watchAt = (video, t) => `https://www.youtube.com/watch?v=${video.id}&t=${toSeconds(t)}s`
 
-function FeaturedGuide() {
-  const exercises = FEATURED_VIDEO.chapters.filter((c) => c.exercise)
-  const basics = FEATURED_VIDEO.chapters.filter((c) => !c.exercise && c.t !== '0:00')
+// Numbered list under a featured video: the exercises in it, or a series of Shorts.
+function NumberedList({ label, items }) {
+  return (
+    <div className="mt-8">
+      {label && <p className="text-sm text-ink/60 mb-3">{label}</p>}
+      <ol className="border-t border-ink/15">
+        {items.map((item) => (
+          <li key={item.href} className="border-b border-ink/10">
+            <a
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-3 py-3.5"
+            >
+              <span className="font-display text-3xl text-ink/45 group-hover:text-accent transition-colors tabular-nums">
+                {item.number}
+              </span>
+              <span className="text-lg leading-snug group-hover:text-accent transition-colors">{item.label}</span>
+              <span className="text-xs text-ink/60 tabular-nums">{item.meta}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  )
+}
+
+// The two "for Dummies" series: the long-form video up top, then its steps.
+function FeaturedTopic({ topic }) {
+  const { feature } = topic
+  const chapters = feature.chapters || []
+  const exercises = chapters.filter((c) => c.exercise)
+  const basics = chapters.filter((c) => !c.exercise && c.t !== '0:00')
+
+  const items = exercises.length
+    ? exercises.map((c) => ({ number: c.exercise, label: c.label, meta: c.t, href: watchAt(feature, c.t) }))
+    : topic.videos
+        .filter((v) => v.part)
+        .map((v) => ({ number: v.part, label: v.title, meta: `Short · ${v.length}`, href: videoUrl(v) }))
+  const others = topic.videos.filter((v) => !v.part)
 
   return (
-    <section className="max-w-page mx-auto px-5 sm:px-8 mt-12">
-      <div className="grid gap-8 lg:gap-12 lg:grid-cols-12">
-        <div className="lg:col-span-7">
-          <a href={at('0:00')} target="_blank" rel="noopener noreferrer" className="group block">
-            <img
-              src={`https://i.ytimg.com/vi/${FEATURED_VIDEO.id}/maxresdefault.jpg`}
-              alt={FEATURED_VIDEO.title}
-              className="w-full aspect-video object-cover rounded-sm"
-            />
-          </a>
-          <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent mt-6">
-            Flying FPV for Dummies · Start here
-          </p>
-          <h2 className="font-display text-4xl sm:text-5xl leading-[1.05] mt-2">
-            <a href={at('0:00')} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
-              {FEATURED_VIDEO.title}
-            </a>
-          </h2>
-          <p className="text-base text-ink/70 mt-4 leading-relaxed max-w-xl">
-            The controls, then eight simulator exercises that build on each other. Pick any exercise to
-            jump straight to it.
-          </p>
-          <p className="text-sm text-ink/60 mt-6">Before the exercises:</p>
-          <p className="text-sm mt-1 leading-7">
-            {basics.map((c, i) => (
-              <span key={c.t}>
-                {i > 0 && <span className="text-ink/40"> · </span>}
-                <a href={at(c.t)} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
-                  {c.label}
-                </a>
-              </span>
-            ))}
-          </p>
-        </div>
+    <>
+      <a href={videoUrl(feature)} target="_blank" rel="noopener noreferrer" className="group block">
+        <span className="block aspect-video overflow-hidden rounded-sm bg-ink/5">
+          <img
+            src={`https://i.ytimg.com/vi/${feature.id}/maxresdefault.jpg`}
+            alt=""
+            loading="lazy"
+            className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
+          />
+        </span>
+        <span className="block font-display text-3xl sm:text-4xl leading-tight mt-5 group-hover:text-accent transition-colors">
+          {feature.title} ↗
+        </span>
+        <span className="block text-xs text-ink/60 mt-2">{feature.length} · The full video</span>
+      </a>
 
-        <ol className="lg:col-span-5 border-t border-ink/15">
-          {exercises.map((c) => (
-            <li key={c.t} className="border-b border-ink/10">
-              <a
-                href={at(c.t)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group grid grid-cols-[3rem_1fr_auto] items-baseline gap-3 py-4"
-              >
-                <span className="font-display text-3xl text-ink/45 group-hover:text-accent transition-colors tabular-nums">
-                  {c.exercise}
-                </span>
-                <span className="text-lg group-hover:text-accent transition-colors">{c.label}</span>
-                <span className="text-xs text-ink/60 tabular-nums">{c.t}</span>
+      {basics.length > 0 && (
+        <p className="text-sm mt-6 leading-7">
+          <span className="text-ink/60">Also in the video: </span>
+          {basics.map((c, i) => (
+            <span key={c.t}>
+              {i > 0 && <span className="text-ink/40"> · </span>}
+              <a href={watchAt(feature, c.t)} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                {c.label}
               </a>
-            </li>
+            </span>
           ))}
-        </ol>
-      </div>
-    </section>
+        </p>
+      )}
+
+      <NumberedList
+        label={topic.listLabel || (exercises.length ? 'The exercises. Pick one to jump straight to it.' : null)}
+        items={items}
+      />
+
+      {others.length > 0 && (
+        <>
+          <p className="text-sm text-ink/60 mt-10 mb-1">More on this</p>
+          <ol className="divide-y divide-ink/10 border-y border-ink/10">
+            {others.map((video) => (
+              <VideoRow key={video.id} video={video} />
+            ))}
+          </ol>
+        </>
+      )}
+    </>
   )
 }
 
@@ -81,20 +109,17 @@ export default function Learn() {
 
       <Contents items={TOPICS} />
 
-      <FeaturedGuide />
-
       {TOPICS.map((topic) => (
-        <Section
-          key={topic.id}
-          id={topic.id}
-          title={topic.title}
-          intro={topic.intro}
-        >
-          <ol className="divide-y divide-ink/10 border-y border-ink/10">
-            {topic.videos.map((video) => (
-              <VideoRow key={video.id} video={video} />
-            ))}
-          </ol>
+        <Section key={topic.id} id={topic.id} title={topic.title} intro={topic.intro}>
+          {topic.feature ? (
+            <FeaturedTopic topic={topic} />
+          ) : (
+            <ol className="divide-y divide-ink/10 border-y border-ink/10">
+              {topic.videos.map((video) => (
+                <VideoRow key={video.id} video={video} />
+              ))}
+            </ol>
+          )}
         </Section>
       ))}
     </PageShell>
