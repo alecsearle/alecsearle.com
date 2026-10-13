@@ -21,7 +21,7 @@ export default function Footer() {
             </li>
           ))}
         </ul>
-        <div className="md:col-span-3 text-xs text-ink/50 leading-relaxed">
+        <div className="md:col-span-3 text-xs text-ink/60 leading-relaxed">
           <p>
             Some gear links are affiliate links. If you buy through them I get a small cut, at no extra cost to
             you.

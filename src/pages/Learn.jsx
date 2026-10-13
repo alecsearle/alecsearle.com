@@ -33,11 +33,11 @@ function FeaturedGuide() {
             The controls, then eight simulator exercises that build on each other. Pick any exercise to
             jump straight to it.
           </p>
-          <p className="text-sm text-ink/50 mt-6">Before the exercises:</p>
+          <p className="text-sm text-ink/60 mt-6">Before the exercises:</p>
           <p className="text-sm mt-1 leading-7">
             {basics.map((c, i) => (
               <span key={c.t}>
-                {i > 0 && <span className="text-ink/25"> · </span>}
+                {i > 0 && <span className="text-ink/40"> · </span>}
                 <a href={at(c.t)} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
                   {c.label}
                 </a>
@@ -55,11 +55,11 @@ function FeaturedGuide() {
                 rel="noopener noreferrer"
                 className="group grid grid-cols-[3rem_1fr_auto] items-baseline gap-3 py-4"
               >
-                <span className="font-display text-3xl text-ink/30 group-hover:text-accent transition-colors tabular-nums">
+                <span className="font-display text-3xl text-ink/45 group-hover:text-accent transition-colors tabular-nums">
                   {c.exercise}
                 </span>
                 <span className="text-lg group-hover:text-accent transition-colors">{c.label}</span>
-                <span className="text-xs text-ink/40 tabular-nums">{c.t}</span>
+                <span className="text-xs text-ink/60 tabular-nums">{c.t}</span>
               </a>
             </li>
           ))}
@@ -71,7 +71,7 @@ function FeaturedGuide() {
 
 export default function Learn() {
   return (
-    <PageShell>
+    <PageShell current="/learn">
       <PageIntro eyebrow="Tutorials" title="Learn FPV">
         <p>
           I started with zero experience and filmed everything I figured out. Here&apos;s all of it, in the
@@ -83,18 +83,16 @@ export default function Learn() {
 
       <FeaturedGuide />
 
-      {TOPICS.map((topic, i) => (
+      {TOPICS.map((topic) => (
         <Section
           key={topic.id}
           id={topic.id}
-          number={String(i + 1).padStart(2, '0')}
           title={topic.title}
           intro={topic.intro}
         >
           <ol className="divide-y divide-ink/10 border-y border-ink/10">
-            {topic.videos.map((video, vi) => (
-              // Series topics number by part; the extra long-form video gets no number.
-              <VideoRow key={video.id} video={video} index={topic.videos.some((v) => v.part) ? null : vi + 1} />
+            {topic.videos.map((video) => (
+              <VideoRow key={video.id} video={video} />
             ))}
           </ol>
         </Section>

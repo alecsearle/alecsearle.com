@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap');
+/* Fonts are loaded with <link> tags in each page's <head> so they start downloading immediately. */
 
 @tailwind base;
 @tailwind components;
@@ -15,7 +15,7 @@
 .dark {
   --paper: 16 16 14;
   --ink: 237 235 228;
-  --tile: 30 30 27;
+  --tile: 40 40 36;
   --accent: 240 84 56;
   color-scheme: dark;
 }
@@ -39,7 +39,7 @@ body {
 /* Long-form text rendered from markdown (official rules) */
 .prose-rules { font-size: 0.875rem; line-height: 1.7; color: rgb(var(--ink) / 0.72); }
 .prose-rules h1 { font-family: "Instrument Serif", Georgia, serif; font-size: 2.75rem; line-height: 1.05; font-weight: 400; color: rgb(var(--ink)); }
-.prose-rules h2 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgb(var(--ink) / 0.5); margin-top: 0.75rem; }
+.prose-rules h2 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgb(var(--ink) / 0.6); margin-top: 0.75rem; }
 .prose-rules h3 { font-size: 1.05rem; font-weight: 600; color: rgb(var(--ink)); border-top: 1px solid rgb(var(--ink) / 0.12); padding-top: 1.5rem; margin-top: 2.25rem; scroll-margin-top: 1.5rem; }
 .prose-rules p, .prose-rules ul, .prose-rules ol { margin-top: 0.75rem; }
 .prose-rules ul { list-style: disc; padding-left: 1.25rem; }

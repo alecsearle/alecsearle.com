@@ -71,7 +71,7 @@ function LaunchChecklist() {
             </li>
           ))}
         </ul>
-        <p className="mt-2 text-[11px] text-ink/50">
+        <p className="mt-2 text-[11px] text-ink/60">
           Edit <code>src/config/site.js</code>, then set status to <code>'open'</code> to launch.
         </p>
       </div>
@@ -89,14 +89,14 @@ function Prizes() {
               <img src={drone.image} alt={drone.name} className="w-4/5 h-4/5 object-contain" />
             </div>
             <p className="mt-3 text-base font-medium leading-tight">{drone.name}</p>
-            <p className="mt-1 text-xs text-ink/50">{drone.variants}</p>
+            <p className="mt-1 text-xs text-ink/60">{drone.variants}</p>
           </div>
         ))}
       </div>
 
       {GIVEAWAY.bonusPrizes.length > 0 && (
         <p className="mt-8 text-base">
-          <span className="text-xs font-medium uppercase tracking-[0.18em] text-ink/50 mr-3">Bonus</span>
+          <span className="text-xs font-medium uppercase tracking-[0.18em] text-ink/60 mr-3">Bonus</span>
           {GIVEAWAY.bonusPrizes.map((p) => `${p.count}× ${p.name}`).join(' · ')}
         </p>
       )}
@@ -133,7 +133,7 @@ function HowToEnter() {
 function EntryForm() {
   if (!GIVEAWAY.formUrl) {
     return (
-      <div className="border border-dashed border-ink/20 rounded-sm px-4 py-10 text-center text-sm text-ink/50">
+      <div className="border border-dashed border-ink/20 rounded-sm px-4 py-10 text-center text-sm text-ink/60">
         Google Form goes here. Add <code>formUrl</code> in <code>src/config/site.js</code>.
       </div>
     )
@@ -205,20 +205,20 @@ export default function Giveaway() {
         )}
       </PageIntro>
 
-      <Section number="01" title="The prizes" intro={`${GIVEAWAY.winners} winners. Each one picks a drone from this list.`}>
+      <Section title="The prizes" intro={`${GIVEAWAY.winners} winners. Each one picks a drone from this list.`}>
         <Prizes />
       </Section>
 
       {status === 'closed' ? (
-        <Section number="02" title="That's a wrap">
+        <Section title="That's a wrap">
           <Closed />
         </Section>
       ) : (
         <>
-          <Section number="02" title="How to enter">
+          <Section title="How to enter">
             <HowToEnter />
           </Section>
-          <Section id="enter" number="03" title="Enter" intro="One entry per person. Duplicates get removed.">
+          <Section id="enter" title="Enter" intro="One entry per person. Duplicates get removed.">
             <EntryForm />
           </Section>
         </>
@@ -226,7 +226,6 @@ export default function Giveaway() {
 
       {DISCORD_INVITE_URL && (
         <Section
-          number={status === 'closed' ? '03' : '04'}
           title="The Discord"
           intro="Not required to enter. Just a good place to hang out with other pilots."
         >

@@ -83,7 +83,6 @@ export const GEAR = {
     forWho: "Your first radio, and maybe your only one",
     blurb: "The radio I fly with every day. Small, affordable, and ELRS built in.",
     tagline: "The radio I recommend for beginners",
-    note: "Amazon",
     href: "https://a.co/d/01hQvt2P",
     store: "Amazon",
     affiliate: false,

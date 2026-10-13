@@ -1,10 +1,4 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
+import mount from './mount.jsx'
 import Giveaway from './pages/Giveaway.jsx'
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Giveaway />
-  </StrictMode>,
-)
+mount(Giveaway)
