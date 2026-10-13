@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="md:col-span-6">
           <p className="font-display text-4xl leading-tight">Follow along.</p>
           <p className="text-sm text-ink/60 mt-3 max-w-sm leading-relaxed">
-            New videos every week. Mostly FPV, some 3D printing, and whatever I break next.
+            Shorts a few times a week and a long-form video every other week.
           </p>
         </div>
         <ul className="md:col-span-3 flex flex-col gap-2">
