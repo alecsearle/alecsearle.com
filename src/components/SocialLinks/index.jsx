@@ -7,7 +7,7 @@ import { DISCORD_INVITE_URL, DISCORD_LIVE, YOUTUBE_CHANNEL_URL } from '../../con
 export const SOCIALS = [
   { label: 'YouTube', href: YOUTUBE_CHANNEL_URL, Icon: Youtube, hover: 'group-hover:text-red-500' },
   { label: 'Instagram', href: 'https://www.instagram.com/alec_searle/', Icon: Instagram, hover: 'group-hover:text-pink-500' },
-  { label: 'TikTok', href: 'https://www.tiktok.com/@alec_searle', Icon: TikTokIcon, hover: 'group-hover:text-ink' },
+  { label: 'TikTok', href: 'https://www.tiktok.com/@alec_searle', Icon: TikTokIcon, hover: 'group-hover:text-purple-500' },
   { label: 'MakerWorld', href: 'https://makerworld.com/en/collections/29512390-fpv-featured', Icon: MakerWorldIcon, hover: 'group-hover:text-[#00AE42]' },
   { label: 'Discord', href: DISCORD_LIVE ? DISCORD_INVITE_URL : '', Icon: DiscordIcon, hover: 'group-hover:text-[#5865F2]' },
 ].filter((s) => s.href)

@@ -61,10 +61,9 @@ function Hero() {
       </div>
       <div className="hidden lg:block lg:col-span-5">
         <img
-          src="/images/alec-portrait.jpg"
-          alt="Alec Searle"
+          src="/images/alec-hero.jpg"
+          alt="Alec in the Utah desert, holding his 3.5-inch quad"
           className="w-full aspect-[4/5] object-cover rounded-sm"
-          style={{ objectPosition: '50% 20%' }}
         />
       </div>
     </section>

@@ -7,3 +7,6 @@ dist
 
 # YouTube export (regenerate with npm run videos)
 scripts/videos.json
+
+# Original full-size photos (source files, not deployed)
+photos/
