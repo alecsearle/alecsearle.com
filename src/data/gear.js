@@ -88,7 +88,6 @@ export const GEAR = {
     store: "Amazon",
     affiliate: false,
     image: "/images/radiomaster-pocket.png",
-    videoId: "6pxz_TcRXAg",
   },
   vr04: {
     name: "VR04 FPV Goggles",
@@ -123,8 +122,7 @@ export const GEAR = {
     href: "https://www.amazon.com/dp/B07J6H955F",
     store: "Amazon",
     affiliate: false,
-    image: null,
-    videoId: null,
+    image: "/images/foxeer-stubs.png",
   },
   lava: {
     name: "Lava II 1S Battery",
@@ -147,7 +145,6 @@ export const GEAR = {
     href: betafpv("/products/hexacharger-1s-charger"),
     store: "BetaFPV",
     image: "/images/hexacharger.png",
-    videoId: "1qa31NgudPY",
   },
 };
 
