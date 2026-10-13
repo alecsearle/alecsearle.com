@@ -4,7 +4,7 @@ export function PageIntro({ eyebrow, title, children }) {
   return (
     <header className="max-w-page mx-auto px-5 sm:px-8 pt-14 sm:pt-20 pb-10">
       {eyebrow && <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent">{eyebrow}</p>}
-      <h1 className="font-display text-6xl sm:text-8xl leading-[0.95] tracking-tight mt-3">{title}</h1>
+      <h1 className="font-display text-5xl sm:text-7xl leading-[1.02] tracking-tight mt-3">{title}</h1>
       {children && <div className="mt-6 max-w-2xl text-lg text-ink/70 leading-relaxed">{children}</div>}
     </header>
   )
@@ -17,7 +17,7 @@ export function Section({ id, title, intro, children, aside }) {
       <div className="border-t border-ink/15 pt-6 sm:pt-10 mt-10 sm:mt-20 grid gap-6 sm:gap-8 md:grid-cols-12">
         <div className="md:col-span-4">
           <div className="md:sticky md:top-24">
-            <h2 className="font-display text-4xl sm:text-5xl leading-none tracking-tight">{title}</h2>
+            <h2 className="font-display text-3xl sm:text-4xl leading-tight tracking-tight">{title}</h2>
             {intro && <p className="text-sm text-ink/60 mt-4 leading-relaxed max-w-xs">{intro}</p>}
             {aside}
           </div>

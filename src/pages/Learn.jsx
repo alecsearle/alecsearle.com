@@ -48,7 +48,7 @@ function NumberedList({ label, items }) {
               rel="noopener noreferrer"
               className="group grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-3 py-3.5"
             >
-              <span className="font-display text-3xl text-ink/45 group-hover:text-accent transition-colors tabular-nums">
+              <span className="font-display text-2xl text-ink/45 group-hover:text-accent transition-colors tabular-nums">
                 {item.number}
               </span>
               <span className="text-lg leading-snug group-hover:text-accent transition-colors">{item.label}</span>
@@ -86,7 +86,7 @@ function FeaturedTopic({ topic }) {
             className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
           />
         </span>
-        <span className="block font-display text-3xl sm:text-4xl leading-tight mt-5 group-hover:text-accent transition-colors">
+        <span className="block font-display text-2xl sm:text-3xl leading-tight mt-5 group-hover:text-accent transition-colors">
           {feature.title} ↗
         </span>
         <span className="block text-xs text-ink/60 mt-2">{feature.length} · The full video</span>

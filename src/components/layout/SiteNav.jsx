@@ -15,7 +15,7 @@ export default function SiteNav({ current = '' }) {
   return (
     <header className="sticky top-0 z-30 bg-paper/90 backdrop-blur border-b border-ink/10">
       <nav className="max-w-page mx-auto px-5 sm:px-8 h-16 flex items-center justify-between gap-6">
-        <a href="/" className="font-display text-2xl leading-none tracking-tight flex-shrink-0">
+        <a href="/" className="font-display text-xl leading-none tracking-tight flex-shrink-0">
           Alec Searle
         </a>
         <div className="flex items-center gap-4 sm:gap-6 min-w-0">

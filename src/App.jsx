@@ -42,8 +42,8 @@ function Hero() {
         <p className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
           @alec_searle · FPV pilot · Southern Utah
         </p>
-        <h1 className="font-display text-5xl sm:text-8xl leading-[0.95] tracking-tight mt-5">
-          I learned FPV from zero, and filmed <em>all</em> of it.
+        <h1 className="font-display text-4xl sm:text-7xl leading-[1.02] tracking-tight mt-5">
+          I learned FPV from zero, and filmed <span className="text-accent">all</span> of it.
         </h1>
         <p className="text-lg text-ink/70 leading-relaxed mt-6 max-w-xl">
           I&apos;m Alec. I bought my first tiny whoop in spring 2026 with no idea what I was doing. Now I make
@@ -100,7 +100,7 @@ function StartHere() {
         <li key={item.q} className="border-b border-ink/10">
           <a href={item.href} className="group grid grid-cols-[1fr_auto] gap-x-4 items-baseline py-5 sm:py-6">
             <span>
-              <span className="block font-display text-3xl sm:text-4xl leading-tight group-hover:text-accent transition-colors">
+              <span className="block font-display text-2xl sm:text-3xl leading-tight group-hover:text-accent transition-colors">
                 {item.q}
               </span>
               <span className="block text-sm text-ink/70 mt-2">{item.a}</span>
@@ -199,7 +199,7 @@ export default function App() {
               className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
             />
           </span>
-          <span className="block font-display text-3xl mt-5 group-hover:text-accent transition-colors">
+          <span className="block font-display text-2xl sm:text-3xl mt-5 group-hover:text-accent transition-colors">
             {JOURNEY_VIDEO.title} ↗
           </span>
         </a>

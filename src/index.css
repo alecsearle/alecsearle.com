@@ -20,6 +20,9 @@
   color-scheme: dark;
 }
 
+/* Headings (Space Grotesk): semibold and slightly tight by default */
+.font-display { font-weight: 600; letter-spacing: -0.025em; }
+
 /* Smooth scrolling for #section links (skipped if the visitor prefers less motion) */
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
@@ -43,7 +46,7 @@ body {
 
 /* Long-form text rendered from markdown (official rules) */
 .prose-rules { font-size: 0.875rem; line-height: 1.7; color: rgb(var(--ink) / 0.72); }
-.prose-rules h1 { font-family: "Instrument Serif", Georgia, serif; font-size: 2.75rem; line-height: 1.05; font-weight: 400; color: rgb(var(--ink)); }
+.prose-rules h1 { font-family: "Space Grotesk", Inter, sans-serif; font-size: 2.25rem; line-height: 1.1; font-weight: 600; letter-spacing: -0.025em; color: rgb(var(--ink)); }
 .prose-rules h2 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgb(var(--ink) / 0.6); margin-top: 0.75rem; }
 .prose-rules h3 { font-size: 1.05rem; font-weight: 600; color: rgb(var(--ink)); border-top: 1px solid rgb(var(--ink) / 0.12); padding-top: 1.5rem; margin-top: 2.25rem; scroll-margin-top: 1.5rem; }
 .prose-rules p, .prose-rules ul, .prose-rules ol { margin-top: 0.75rem; }

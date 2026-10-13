@@ -54,7 +54,7 @@ export default function Gear() {
                 <div key={group.label || gi}>
                   {group.label && (
                     <div className="mb-6">
-                      <h3 className="font-display text-3xl">{group.label}</h3>
+                      <h3 className="font-display text-2xl">{group.label}</h3>
                       {group.note && <p className="text-sm text-ink/70 mt-1">{group.note}</p>}
                     </div>
                   )}

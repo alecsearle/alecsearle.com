@@ -4,18 +4,10 @@
 // Also keeps the API key out of the browser bundle.
 
 const API_KEY = process.env.YOUTUBE_API_KEY || process.env.VITE_YOUTUBE_API_KEY
-const HANDLE = '@alec_searle'
-
-// true = long-form only, false = all videos including Shorts
-const LONG_FORM_ONLY = false
-
-function parseDurationSeconds(iso) {
-  const match = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/)
-  const h = parseInt(match?.[1] || 0)
-  const m = parseInt(match?.[2] || 0)
-  const s = parseInt(match?.[3] || 0)
-  return h * 3600 + m * 60 + s
-}
+// YouTube keeps an automatic long-form-only uploads playlist for every channel:
+// the channel ID with "UC" swapped for "UULF". Shorts never appear in it.
+const CHANNEL_ID = 'UCiMs_UjXQ49N9G-Sa7bOBqQ'
+const LONG_FORM_PLAYLIST = `UULF${CHANNEL_ID.slice(2)}`
 
 async function getJson(url) {
   const res = await fetch(url)
@@ -25,45 +17,14 @@ async function getJson(url) {
 }
 
 async function fetchLatestVideos() {
-  const channelData = await getJson(
-    `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=${HANDLE}&key=${API_KEY}`
+  const data = await getJson(
+    `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${LONG_FORM_PLAYLIST}&maxResults=10&key=${API_KEY}`
   )
-  const uploadsId = channelData.items?.[0]?.contentDetails?.relatedPlaylists?.uploads
-  if (!uploadsId) throw new Error('Uploads playlist not found')
-
-  const playlistData = await getJson(
-    `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsId}&maxResults=20&key=${API_KEY}`
-  )
-  const items = playlistData.items || []
-
-  if (!LONG_FORM_ONLY) {
-    return items.slice(0, 10).map((item) => ({
-      id: item.snippet.resourceId.videoId,
-      title: item.snippet.title,
-      thumbnail: item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url,
-    }))
-  }
-
-  // Fetch durations to filter out Shorts (≤ 60s)
-  const ids = items.map((i) => i.snippet.resourceId.videoId).join(',')
-  const detailsData = await getJson(
-    `https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${ids}&key=${API_KEY}`
-  )
-  const durationMap = Object.fromEntries(
-    (detailsData.items || []).map((v) => [v.id, parseDurationSeconds(v.contentDetails.duration)])
-  )
-
-  return items
-    .filter((item) => {
-      const id = item.snippet.resourceId.videoId
-      return durationMap[id] !== undefined && durationMap[id] > 60
-    })
-    .slice(0, 10)
-    .map((item) => ({
-      id: item.snippet.resourceId.videoId,
-      title: item.snippet.title,
-      thumbnail: item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url,
-    }))
+  return (data.items || []).map((item) => ({
+    id: item.snippet.resourceId.videoId,
+    title: item.snippet.title,
+    thumbnail: item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url,
+  }))
 }
 
 export default async function handler(req, res) {

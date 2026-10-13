@@ -12,7 +12,7 @@ export default {
         accent: 'rgb(var(--accent) / <alpha-value>)', // the red from the thumbnails, used sparingly
       },
       fontFamily: {
-        display: ['"Instrument Serif"', 'Georgia', 'serif'],
+        display: ['"Space Grotesk"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
       },
       maxWidth: {

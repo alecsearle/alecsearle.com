@@ -69,7 +69,7 @@ export function GearFeature({ item, eyebrow }) {
       <GearImage item={item} className="aspect-[4/3] sm:aspect-square" />
       <div className="flex flex-col gap-3">
         {eyebrow && <p className="text-xs font-medium uppercase tracking-[0.18em] text-ink/60">{eyebrow}</p>}
-        <h3 className="font-display text-4xl leading-tight">{item.name}</h3>
+        <h3 className="font-display text-3xl leading-tight">{item.name}</h3>
         <GearLabels item={item} />
         <p className="text-base text-ink/80 leading-relaxed">{item.blurb}</p>
         {item.forWho && (

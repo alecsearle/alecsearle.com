@@ -166,7 +166,7 @@ The full beginner setup list and the 3.5" build leave the homepage and move to /
 
 **Clean and editorial:**
 - **Colours:** off-white paper `#F6F5F1`, ink `#17160F`, and one accent red `#D7381E` taken from the thumbnails. The tokens live in `tailwind.config.js`.
-- **Type:** *Instrument Serif* for display headings and *Inter* for body text.
+- **Type:** *Space Grotesk* for display headings and *Inter* for body text.
 - **Structure:** hairline rules and whitespace instead of cards. Numbered sections have the heading in a left column on desktop (`Section` in `src/components/ui/Editorial.jsx`).
 - **Imagery:** large photos and thumbnails, and white tiles for product photos. Placeholders are fine until there are real photos.
 - **Motion:** hover states only.

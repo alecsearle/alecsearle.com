@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="border-t border-ink/10 mt-24">
       <div className="max-w-page mx-auto px-5 sm:px-8 py-14 grid gap-10 md:grid-cols-12">
         <div className="md:col-span-6">
-          <p className="font-display text-4xl leading-tight">Follow along.</p>
+          <p className="font-display text-3xl leading-tight">Follow along.</p>
           <p className="text-sm text-ink/60 mt-3 max-w-sm leading-relaxed">
             Shorts a few times a week and a long-form video every other week.
           </p>

@@ -121,7 +121,7 @@ function HowToEnter() {
         <li key={title} className="border-b border-ink/10 grid grid-cols-[2.5rem_1fr] gap-x-4 py-5">
           <span className="font-display text-3xl text-accent leading-none">{i + 1}</span>
           <span>
-            <span className="block font-display text-2xl sm:text-3xl leading-tight">{title}</span>
+            <span className="block font-display text-xl sm:text-2xl leading-tight">{title}</span>
             <span className="block text-sm text-ink/60 mt-1">{body}</span>
           </span>
         </li>
@@ -162,7 +162,7 @@ function EntryForm() {
 function Closed() {
   return (
     <div>
-      <p className="font-display text-4xl leading-tight">Entries are closed.</p>
+      <p className="font-display text-3xl leading-tight">Entries are closed.</p>
       <p className="text-base text-ink/70 mt-3 leading-relaxed max-w-xl">
         Thanks to everyone who entered. Winners will be contacted by email and announced
         {DISCORD_INVITE_URL ? ' in the Discord' : ''} once they&apos;re confirmed.
