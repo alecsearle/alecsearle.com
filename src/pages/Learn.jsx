@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import PageShell from '../components/layout/PageShell'
 import VideoRow, { videoUrl } from '../components/VideoRow'
 import { PageIntro, Section, Contents } from '../components/ui/Editorial'
@@ -5,6 +6,33 @@ import { TOPICS } from '../data/videos'
 
 const toSeconds = (t) => t.split(':').reduce((total, n) => total * 60 + Number(n), 0)
 const watchAt = (video, t) => `https://www.youtube.com/watch?v=${video.id}&t=${toSeconds(t)}s`
+
+// Video list that shows the first two, with a button for the rest.
+function VideoList({ videos, preview = 2 }) {
+  const [open, setOpen] = useState(false)
+  const shown = open ? videos : videos.slice(0, preview)
+  const hidden = videos.length - preview
+
+  return (
+    <>
+      <ol className="divide-y divide-ink/10 border-y border-ink/10">
+        {shown.map((video) => (
+          <VideoRow key={video.id} video={video} />
+        ))}
+      </ol>
+      {hidden > 0 && (
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          className="mt-4 inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full border border-ink/25 hover:border-accent hover:text-accent transition-colors"
+        >
+          {open ? 'Show less' : `Show all ${videos.length} videos`}
+        </button>
+      )}
+    </>
+  )
+}
 
 // Numbered list under a featured video: the exercises in it, or a series of Shorts.
 function NumberedList({ label, items }) {
@@ -86,11 +114,7 @@ function FeaturedTopic({ topic }) {
       {others.length > 0 && (
         <>
           <p className="text-sm text-ink/60 mt-10 mb-1">More on this</p>
-          <ol className="divide-y divide-ink/10 border-y border-ink/10">
-            {others.map((video) => (
-              <VideoRow key={video.id} video={video} />
-            ))}
-          </ol>
+          <VideoList videos={others} />
         </>
       )}
     </>
@@ -114,11 +138,7 @@ export default function Learn() {
           {topic.feature ? (
             <FeaturedTopic topic={topic} />
           ) : (
-            <ol className="divide-y divide-ink/10 border-y border-ink/10">
-              {topic.videos.map((video) => (
-                <VideoRow key={video.id} video={video} />
-              ))}
-            </ol>
+            <VideoList videos={topic.videos} />
           )}
         </Section>
       ))}

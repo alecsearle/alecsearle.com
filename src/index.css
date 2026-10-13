@@ -20,6 +20,11 @@
   color-scheme: dark;
 }
 
+/* Smooth scrolling for #section links (skipped if the visitor prefers less motion) */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
 body {
   background-color: rgb(var(--paper));
   color: rgb(var(--ink));
