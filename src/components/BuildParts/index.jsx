@@ -6,7 +6,7 @@ function PartRow({ part }) {
   const inner = (
     <>
       <span className="w-14 h-14 bg-tile rounded-sm flex items-center justify-center overflow-hidden flex-shrink-0">
-        {part.image && <img src={part.image} alt="" loading="lazy" className="w-full h-full object-cover" />}
+        {part.image && <img src={part.image} alt="" loading="lazy" className="w-[86%] h-[86%] object-contain" />}
       </span>
       <span className="min-w-0 flex-1">
         <span className="block text-[11px] font-medium uppercase tracking-[0.14em] text-ink/60">{part.category}</span>

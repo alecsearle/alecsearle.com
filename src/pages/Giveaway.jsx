@@ -86,7 +86,7 @@ function Prizes() {
         {GIVEAWAY.eligibleDrones.map((drone) => (
           <div key={drone.id}>
             <div className="bg-tile rounded-sm aspect-square flex items-center justify-center">
-              <img src={drone.image} alt={drone.name} className="w-4/5 h-4/5 object-contain" />
+              <img src={drone.image} alt={drone.name} className="w-[86%] h-[86%] object-contain" />
             </div>
             <p className="mt-3 text-base font-medium leading-tight">{drone.name}</p>
             <p className="mt-1 text-xs text-ink/60">{drone.variants}</p>

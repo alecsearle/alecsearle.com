@@ -33,6 +33,13 @@ const START_HERE = [
   },
 ]
 
+// Quick routes under the hero, for people arriving from a bio link.
+const QUICK_LINKS = [
+  { label: 'What to buy', href: '/gear#start' },
+  { label: 'Learn to fly', href: '/learn' },
+  { label: 'Fix a problem', href: '/learn#fixes' },
+]
+
 const JOURNEY_VIDEO = { id: 'NJK1SpQ9Vdc', title: '6 Months of FPV Changed Everything' }
 
 function Hero() {
@@ -50,6 +57,18 @@ function Hero() {
           videos about everything I&apos;ve learned, so you don&apos;t have to figure it out alone.
         </p>
         <SocialLinks className="mt-8" />
+        <ul className="mt-6 flex flex-wrap gap-2">
+          {QUICK_LINKS.map(({ label, href }) => (
+            <li key={label}>
+              <a
+                href={href}
+                className="inline-flex items-center gap-1.5 text-sm font-medium px-4 py-2 rounded-full border border-ink/25 hover:border-accent hover:text-accent transition-colors"
+              >
+                {label} →
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
       <div className="lg:col-span-5">
         {/* Landscape crop on phones (face + quad), full portrait beside the text on desktop */}

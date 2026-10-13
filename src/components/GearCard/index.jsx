@@ -4,7 +4,7 @@ export function GearImage({ item, className = '' }) {
   return (
     <div className={`bg-tile rounded-sm flex items-center justify-center overflow-hidden ${className}`}>
       {item.image ? (
-        <img src={item.image} alt="" loading="lazy" className="w-4/5 h-4/5 object-contain" />
+        <img src={item.image} alt="" loading="lazy" className="w-[86%] h-[86%] object-contain" />
       ) : (
         <span className="font-display text-xl text-ink/50 text-center px-4">{item.name}</span>
       )}
@@ -47,7 +47,7 @@ export function GearLinks({ item, solid = false }) {
 // Grid tile: image on top, text underneath. No box.
 export default function GearCard({ item }) {
   return (
-    <article className="grid grid-cols-[6rem_1fr] gap-x-4 items-start sm:flex sm:flex-col">
+    <article className="grid grid-cols-[6rem_1fr] gap-x-4 items-start sm:flex sm:flex-col sm:items-stretch">
       <GearImage item={item} className="aspect-square sm:aspect-[4/3]" />
       <div className="sm:mt-4 flex flex-col gap-2">
         <GearLabels item={item} />
