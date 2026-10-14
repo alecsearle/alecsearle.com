@@ -140,3 +140,35 @@ export const BUILD_EXTRAS = [
 
 export const BUILD_CORE_COST = Math.round(sumPrices(BUILD_PARTS));
 export const BUILD_EXTRAS_COST = Math.round(sumPrices(BUILD_EXTRAS));
+
+// ── /builds page ────────────────────────────────────────────────────
+
+// The build, remade as a series of Shorts.
+export const BUILD_SHORTS = [
+  { id: "TAT71OXmstI", title: "Building My First FPV Drone | Part 1: Frame", length: "0:30", short: true, part: 1 },
+  { id: "GVIB7CPLh8M", title: "Building My First FPV Drone | Part 2: Dry Fit", length: "0:30", short: true, part: 2 },
+  { id: "_gDjjzxK8Mc", title: "Building My First FPV Drone | Part 3: Solder", length: "0:30", short: true, part: 3 },
+  { id: "kH_w0r2dVks", title: "Building My First FPV Drone | Part 4: Betaflight", length: "0:30", short: true, part: 4 },
+  { id: "1QL93R8Iu2s", title: "Building My First FPV Drone | Part 5: First Flight", length: "1:53", short: true, part: 5 },
+];
+
+// What's changing on the Bandit next. Empty string hides the note.
+export const BUILD_UPDATE =
+  "I'm converting it to the DJI O4 Pro. The new parts list goes here once it's done.";
+
+// Printed on my Bambu Lab A1. MAKERWORLD_URL is my "FPV Featured" collection:
+// prints I use, some mine and some by other people.
+export const MAKERWORLD_URL = "https://makerworld.com/en/collections/29512390-fpv-featured";
+export const PRINTS = [
+  { id: "6pxz_TcRXAg", title: "3D Printed Carrying Case: RadioMaster Pocket", length: "0:20", short: true },
+  { id: "kxK8bfnz910", title: "3D Printed Case for the Air65 + LiPos", length: "0:19", short: true },
+  { id: "3SVPdnxMJNw", title: "3D Printed FPV Goggle Case", length: "0:24", short: true },
+  { id: "k_xgdUNUlBU", title: "3D Printed Tinywhoop Case", length: "0:22", short: true },
+  { id: "RM92MdUxB00", title: "I Love Combining 3D Printing with FPV Drones", length: "0:18", short: true },
+];
+
+export const REPAIRS = [
+  { id: "mgYs0kuHWBM", title: "I Tried Soldering for the First Time… (FPV Beginner)", length: "12:42" },
+  { id: "jpcwGQwbkCw", title: "I LEARNED HOW TO DIRECT SOLDER MY MOTOR WIRES (Air 65II)", length: "16:14" },
+  { id: "-EonGpeA6uc", title: "How To Fix a Tinywhoop Motor That Won’t Spin", length: "1:30", short: true },
+];

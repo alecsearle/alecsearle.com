@@ -9,6 +9,10 @@
       "destination": "/learn/index.html"
     },
     {
+      "source": "/builds",
+      "destination": "/builds/index.html"
+    },
+    {
       "source": "/giveaway",
       "destination": "/giveaway/index.html"
     },

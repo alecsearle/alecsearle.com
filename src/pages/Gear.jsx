@@ -46,7 +46,7 @@ export default function Gear() {
           intro={section.intro}
         >
           <div className="flex flex-col gap-10 sm:gap-14">
-            {section.featured && <GearFeature item={section.featured} eyebrow="The easy way: one box" />}
+            {section.featured && <GearFeature item={section.featured} eyebrow={section.featuredLabel} />}
             {section.groups.map((group, gi) =>
               section.id === 'flying' ? (
                 <GearList key={gi} items={group.items} />
@@ -66,6 +66,7 @@ export default function Gear() {
                 </div>
               ),
             )}
+            {section.footnote && <p className="text-sm text-ink/60">{section.footnote}</p>}
           </div>
         </Section>
       ))}

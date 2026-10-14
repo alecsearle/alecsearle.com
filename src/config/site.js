@@ -8,7 +8,7 @@ export const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@alec_searle";
 export const NAV_LINKS = [
   { label: "Gear", href: "/gear" },
   { label: "Learn", href: "/learn" },
-  // { label: "Builds", href: "/builds" },
+  { label: "Builds", href: "/builds" },
 ];
 
 // Permanent Discord invite (never expires). Empty = Discord links hidden.

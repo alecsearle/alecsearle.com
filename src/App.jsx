@@ -3,11 +3,9 @@ import GiveawayBanner from './components/GiveawayBanner'
 import DiscordCard from './components/DiscordCard'
 import LatestVideos from './components/LatestVideos'
 import SocialLinks from './components/SocialLinks'
-import BuildParts from './components/BuildParts'
 import { GearFeature, GearImage } from './components/GearCard'
 import { AffiliateNote, ButtonLink, Section, TextLink } from './components/ui/Editorial'
 import { FEATURED, BEGINNER_SETUP, BETAFPV_MAIN } from './data/gear'
-import { BUILD_HERO_IMAGE, BUILD_VIDEO_URL } from './data/builds'
 import { DISCORD_LIVE, YOUTUBE_CHANNEL_URL } from './config/site'
 
 const START_HERE = [
@@ -151,26 +149,6 @@ export default function App() {
         <ButtonLink href={BETAFPV_MAIN} sponsored solid className="mt-8">
           Shop All BetaFPV ↗
         </ButtonLink>
-      </Section>
-
-      <Section
-        id="build"
-        title='My First 3.5" Build'
-        intro='The exact parts list from my first 3.5" freestyle build.'
-      >
-        <div className="grid gap-6 sm:gap-8 sm:grid-cols-2">
-          <div>
-            {/* Short on phones so "View full parts list" stays on screen */}
-            <img
-              src={BUILD_HERO_IMAGE}
-              alt='My finished 3.5" build'
-              loading="lazy"
-              className="w-full aspect-video sm:aspect-[4/5] object-cover rounded-sm"
-            />
-            <TextLink href={BUILD_VIDEO_URL} className="inline-block mt-4">Watch the build video ↗</TextLink>
-          </div>
-          <BuildParts />
-        </div>
       </Section>
 
       <Section title="New to FPV?" intro="The four questions I get asked the most.">

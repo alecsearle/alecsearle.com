@@ -63,14 +63,14 @@ export const GEAR = {
     image: "/images/air75.png",
     videoId: "rPBj_TY7ePU",
   },
-  "meteor75-pro": {
-    name: "Meteor75 Pro Brushless Whoop",
+  "meteor75-pro-ii": {
+    name: "Meteor75 Pro II Brushless Whoop",
     category: "whoops",
     recommend: true,
     forWho: "Beginners who crash a lot (so, everyone)",
-    blurb: "The drone from the Meteor75 Pro kit, on its own. Built like a tank.",
+    blurb: "The newer version of the drone in the Meteor75 Pro kit, on its own. Built like a tank.",
     tagline: "Near indestructible tank",
-    href: betafpv("/products/meteor75-pro-brushless-whoop-quadcopter?variant=42995723337862"),
+    href: betafpv("/products/meteor75-pro-ii-brushless-whoop-quadcopter"),
     store: "BetaFPV",
     image: "/images/Meteor75_Pro.png",
     videoId: "NXwnuzHCjhg",
@@ -112,6 +112,18 @@ export const GEAR = {
     image: "/images/sky04x-pro.png",
     videoId: "1wmoYFjcva8",
   },
+  "meteor75-pro-ii-o4": {
+    name: "Meteor75 Pro II O4",
+    category: "digital",
+    fly: true,
+    recommend: true,
+    forWho: "Whoop pilots who want HD video",
+    blurb: "My first digital drone. A 1S whoop with the DJI O4 Air Unit, so it flies with DJI goggles instead of analog ones.",
+    href: betafpv("/products/meteor75-pro-ii-o4-brushless-whoop-quadcopter"),
+    store: "BetaFPV",
+    image: "/images/Meteor75_Pro_II_O4.webp",
+    videoId: null, // paste the review video id when it's out
+  },
   "foxeer-stubs": {
     name: "Foxeer Stub Antennas",
     category: "accessories",
@@ -127,7 +139,7 @@ export const GEAR = {
     name: "Lava II 1S Battery",
     category: "batteries",
     recommend: true,
-    forWho: "The Air65, Air75, and Meteor75 (all 1S whoops)",
+    forWho: "The Air65, Air75, and Meteor75 Pro II (all 1S whoops)",
     blurb: "The batteries I use in my whoops. Get more than you think you need.",
     tagline: "Long-lasting 1S power",
     href: betafpv("/products/lava-ii-1s-battery"),
@@ -150,6 +162,7 @@ export const GEAR = {
 const item = (id) => ({ id, ...GEAR[id] });
 
 // ── /gear page sections ─────────────────────────────────────────────
+// live: false keeps a section off the site until it's ready.
 export const GEAR_SECTIONS = [
   {
     id: "start",
@@ -157,14 +170,25 @@ export const GEAR_SECTIONS = [
     intro:
       "This is what I'd tell a friend to buy. Grab the kit if you want it easy, or put the pieces together yourself.",
     featured: item("meteor75-pro-kit"),
+    featuredLabel: "The easy way: one box",
     groups: [
       {
         label: "Pick a drone",
         note: "Not sure which one? I've got a video coming comparing all three.",
-        items: ["air65", "air75", "meteor75-pro"].map(item),
+        items: ["air65", "air75", "meteor75-pro-ii"].map(item),
       },
       { label: "Then add", items: ["vr04", "radiomaster", "lava", "hexacharger"].map(item) },
     ],
+  },
+  {
+    id: "digital",
+    title: "Going digital",
+    intro: "The next step after analog: HD video in your goggles. This is where I started.",
+    live: false, // flip to true once the Meteor75 Pro II O4 video is out
+    featured: item("meteor75-pro-ii-o4"),
+    featuredLabel: "My pick for your first digital drone",
+    groups: [],
+    footnote: "You'll need DJI goggles to fly it. I use the DJI Goggles 3.",
   },
   {
     id: "flying",
@@ -172,10 +196,10 @@ export const GEAR_SECTIONS = [
     intro: "My current analog setup.",
     groups: [{ items: ["air75", "radiomaster", "sky04x-pro", "foxeer-stubs"].map(item) }],
   },
-];
+].filter((section) => section.live !== false);
 
 // ── Homepage: "Featured" + "The Best Beginner FPV Setup" ─────────────
 // My videos show people scrolling to this exact list. Keep the order,
 // section names, and links stable.
 export const FEATURED = item("meteor75-pro-kit");
-export const BEGINNER_SETUP = ["air65", "air75", "meteor75-pro", "radiomaster", "vr04", "lava", "hexacharger"].map(item);
+export const BEGINNER_SETUP = ["air65", "air75", "meteor75-pro-ii", "radiomaster", "vr04", "lava", "hexacharger"].map(item);
