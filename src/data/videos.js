@@ -95,6 +95,18 @@ export const TOPICS = [
     ],
   },
   {
+    id: "digital",
+    title: "Going digital",
+    intro: "Trying digital FPV after six months of analog.",
+    videos: [
+      { id: "UV-LIEY7-k0", title: "I'm DONE With Analog FPV… (Meteor75 Pro II O4 Review)", length: "17:57" },
+      { id: "nmbdCi8Gpjk", title: "Analog vs Digital FPV is INSANE", length: "0:30", short: true },
+      { id: "3VtYRNwq5FA", title: "Unboxing the Meteor75 Pro II O4", length: "0:29", short: true },
+      { id: "EU8uWy9x1zg", title: "Paramotor Water Drag FPV Shot", length: "0:22", short: true },
+      { id: "XfKd-4B_RAY", title: "First Flight w/ the DJI Avata 2", length: "0:59", short: true },
+    ],
+  },
+  {
     id: "builds",
     title: "Builds & repairs",
     intro: "Soldering, building, and fixing things I broke.",

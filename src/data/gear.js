@@ -116,13 +116,12 @@ export const GEAR = {
     name: "Meteor75 Pro II O4",
     category: "digital",
     fly: true,
-    recommend: true,
     forWho: "Whoop pilots who want HD video",
-    blurb: "My first digital drone. A 1S whoop with the DJI O4 Air Unit, so it flies with DJI goggles instead of analog ones.",
+    blurb: "My first digital drone. A 1S whoop with the DJI O4 Wide Air Unit, so it flies with DJI goggles instead of analog ones.",
     href: betafpv("/products/meteor75-pro-ii-o4-brushless-whoop-quadcopter"),
     store: "BetaFPV",
-    image: "/images/Meteor75_Pro_II_O4.webp",
-    videoId: null, // paste the review video id when it's out
+    image: "/images/Meteor75_Pro_II_O4.png",
+    videoId: "UV-LIEY7-k0",
   },
   "foxeer-stubs": {
     name: "Foxeer Stub Antennas",
@@ -183,8 +182,8 @@ export const GEAR_SECTIONS = [
   {
     id: "digital",
     title: "Going digital",
-    intro: "The next step after analog: HD video in your goggles. This is where I started.",
-    live: false, // flip to true once the Meteor75 Pro II O4 video is out
+    intro:
+      "Analog is still where I'd tell most people to start. When you want HD video in your goggles, this is where I'd go next.",
     featured: item("meteor75-pro-ii-o4"),
     featuredLabel: "My pick for your first digital drone",
     groups: [],
